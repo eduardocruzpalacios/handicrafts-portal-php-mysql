@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $id = $_POST['user'];
   $password = $_POST['password'];
 
-  $result = login($id, $password);
+  $result = getUserId($id, $password);
 
   if ($result) {
     setcookie('user', $result, time() + 3600);

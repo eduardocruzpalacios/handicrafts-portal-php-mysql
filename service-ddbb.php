@@ -8,7 +8,7 @@ if (!$connection) {
 
 // USERS
 
-function login($id, $password)
+function getUserId($id, $password)
 {
   global $connection;
 

@@ -12,10 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $id = $_POST['user'];
   $password = $_POST['password'];
 
-  $result = getUserId($id, $password);
+  $result = login($id, $password);
 
   if ($result) {
-    setcookie('user', $result, time() + 3600);
+    setcookie('user', $id, time() + 3600);
     header('Location: admin.php');
     exit();
   } else {

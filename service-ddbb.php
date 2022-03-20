@@ -8,7 +8,7 @@ if (!$connection) {
 
 // USERS
 
-function getUserId($id, $password)
+function login($id, $password)
 {
   global $connection;
 
@@ -17,8 +17,8 @@ function getUserId($id, $password)
 
   $result = mysqli_query($connection, $query);
 
-  if ($result) {
-    return mysqli_fetch_row($result)[0];
+  if (mysqli_fetch_row($result)) {
+    return true;
   } else {
     return false;
   }

@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
   <?php include './views/header.html' ?>
-  <?php include './views/login.php' ?>
+  <?php include './views/login_form.php' ?>
 </body>
 
 </html>

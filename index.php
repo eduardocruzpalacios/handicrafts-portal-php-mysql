@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
+  <?php include './views/header.html'?>
   <section>
     <h2>Login</h2>
     <form action="" method="post">

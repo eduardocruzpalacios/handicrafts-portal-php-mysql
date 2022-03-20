@@ -15,6 +15,7 @@
           ?>
         </span>
       <?php endif; ?>
+      <a href="signup.php">Sign up</a>
     </fieldset>
   </form>
 </section>

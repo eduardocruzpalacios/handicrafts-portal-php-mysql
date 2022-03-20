@@ -24,4 +24,52 @@ function getUserId($id, $password)
   }
 }
 
+function userIdExists($id)
+{
+  global $connection;
+
+  $query = "SELECT id FROM users WHERE users.id = '$id'";
+
+  $result = mysqli_query($connection, $query);
+
+  if (mysqli_fetch_row($result)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function userEmailExists($email)
+{
+  global $connection;
+
+  $query = "SELECT email FROM users WHERE users.email = '$email'";
+
+  $result = mysqli_query($connection, $query);
+
+  if (mysqli_fetch_row($result)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function createUser($id, $email, $password)
+{
+  global $connection;
+
+  $query = "INSERT INTO users (id, email, password) VALUES (?, ?, ?)";
+
+  $stmt = $connection->prepare($query);
+
+  $stmt->bind_param('sss', $id, $email, $password);
+
+  $result = $stmt->execute();
+
+  if ($result) {
+    return true;
+  } else {
+    return false;
+  }
+}
 ?>

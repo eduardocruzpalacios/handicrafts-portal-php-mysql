@@ -17,7 +17,7 @@ function getUserId($id, $password)
 
   $result = mysqli_query($connection, $query);
 
-  if ($query) {
+  if ($result) {
     return mysqli_fetch_row($result)[0];
   } else {
     return false;

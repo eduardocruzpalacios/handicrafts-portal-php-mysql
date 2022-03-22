@@ -1,5 +1,7 @@
 <?php
 require 'service-ddbb.php';
+require 'model/handicraft.php';
+require 'service-handicraft-read-all.php';
 
 session_start();
 
@@ -22,6 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $error = 'Wrong user or password';
   }
 }
+
+loadHandicraftOnSession();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +45,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <?php include './views/header.html' ?>
   <?php include './views/nav.html' ?>
   <?php include './views/login_form.php' ?>
+  <section>
+    <!-- PRINT HANDICRAFT -->
+    <?php for ($x = 0; $x < count($_SESSION['handicraft']); $x++) : ?>
+      <article>
+        <p><?php echo $_SESSION['handicraft'][$x]->get_id(); ?></p>
+        <p><?php echo $_SESSION['handicraft'][$x]->get_date(); ?></p>
+        <p><?php echo $_SESSION['handicraft'][$x]->get_user(); ?></p>
+        <p><?php echo $_SESSION['handicraft'][$x]->get_title(); ?></p>
+        <p><?php echo $_SESSION['handicraft'][$x]->get_description(); ?></p>
+        <?php if ($_SESSION['handicraft'][$x]->get_onsale() == 1) : ?>
+          <p><?php echo $_SESSION['handicraft'][$x]->get_price(); ?></p>
+        <?php else : ?>
+          <p>not for sale</p>
+        <?php endif; ?>
+        <img src="./img/<?php echo $_SESSION['handicraft'][$x]->get_img(); ?>" alt="<?php echo $_SESSION['handicraft'][$x]->get_title(); ?>">
+      </article>
+    <?php endfor; ?>
+  </section>
 </body>
 
 </html>

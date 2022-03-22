@@ -72,4 +72,20 @@ function createUser($id, $email, $password)
     return false;
   }
 }
+
+// HANDICRAFT
+function readAllHandicraft()
+{
+  global $connection;
+
+  $query = "SELECT * FROM handicraft";
+
+  $result = mysqli_query($connection, $query);
+
+  if ($result) {
+    return $result;
+  } else {
+    return false;
+  }
+}
 ?>

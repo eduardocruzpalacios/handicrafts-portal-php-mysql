@@ -11,3 +11,16 @@ CREATE TABLE `handicraft`.`users` (
   `password` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
+
+/* TABLE HANDICRAFT */
+CREATE TABLE `handicraft`.`handicraft` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `date-upload` DATE NOT NULL,
+  `user-id` VARCHAR(20) NOT NULL,
+  `title` VARCHAR(50) NOT NULL,
+  `description` VARCHAR(255) NOT NULL,
+  `onsale` BIT(1) NOT NULL,
+  `price` FLOAT NULL DEFAULT NULL,
+  `img-name` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB;

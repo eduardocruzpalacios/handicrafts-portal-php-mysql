@@ -63,3 +63,9 @@ VALUES
     NULL,
     'mock-img.png'
   )
+
+ /* read all */
+SELECT
+  *
+FROM
+  `handicraft`

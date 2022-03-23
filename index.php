@@ -5,10 +5,6 @@ require 'service-handicraft-read-all.php';
 
 session_start();
 
-if (isset($_COOKIE['user'])) {
-  header('Location: admin.php');
-}
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $id = $_POST['user'];

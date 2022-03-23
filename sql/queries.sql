@@ -21,13 +21,13 @@ WHERE
 INSERT INTO
   `handicraft` (
     `id`,
-    `date-upload`,
-    `user-id`,
+    `dateupload`,
+    `userid`,
     `title`,
     `description`,
     `onsale`,
     `price`,
-    `img-name`
+    `imgname`
   )
 VALUES
   (
@@ -36,7 +36,7 @@ VALUES
     'admin',
     'Prueba',
     'Cammpo largo bla bla blaCammpo largo bla bla bla Cammpo largo bla bla bla Cammpo largo bla bla bla ',
-    b '1',
+    b'1',
     '2.56',
     'mock-img.png'
   )
@@ -44,13 +44,13 @@ VALUES
   INSERT INTO
   `handicraft` (
     `id`,
-    `date-upload`,
-    `user-id`,
+    `dateupload`,
+    `userid`,
     `title`,
     `description`,
     `onsale`,
     `price`,
-    `img-name`
+    `imgname`
   )
 VALUES
   (
@@ -59,13 +59,21 @@ VALUES
     'admin',
     'Prueba not on sale',
     'hello hello hello',
-    b '0',
+    b'0',
     NULL,
     'mock-img.png'
   )
 
- /* read all */
+/* read all */
 SELECT
   *
 FROM
   `handicraft`
+
+/* read some */
+SELECT
+  *
+FROM
+  handicraft
+WHERE
+  userid LIKE 'admin'

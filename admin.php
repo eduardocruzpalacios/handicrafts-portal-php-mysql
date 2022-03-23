@@ -24,8 +24,8 @@ loadUserHandicraftOnSession($_COOKIE['user']);
 </head>
 
 <body>
-  <?php include './views/header.html' ?>
-  <?php include './views/nav.html' ?>
+  <?php include './views/header.php' ?>
+  <?php include './views/nav.php' ?>
   <section>
     <!-- PRINT HANDICRAFT -->
     <?php for ($x = 0; $x < count($_SESSION['userhandicraft']); $x++) : ?>

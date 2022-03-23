@@ -41,8 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-  <?php include './views/header.html' ?>
-  <?php include './views/nav.html' ?>
+  <?php include './views/header.php' ?>
+  <?php include './views/nav.php' ?>
   <?php include './views/signup_form.php' ?>
 </body>
 

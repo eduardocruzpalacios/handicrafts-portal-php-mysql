@@ -42,8 +42,8 @@ loadHandicraftOnSession();
 </head>
 
 <body>
-  <?php include './views/header.html' ?>
-  <?php include './views/nav.html' ?>
+  <?php include './views/header.php' ?>
+  <?php include './views/nav.php' ?>
   <?php include './views/login_form.php' ?>
   <section>
     <!-- PRINT HANDICRAFT -->

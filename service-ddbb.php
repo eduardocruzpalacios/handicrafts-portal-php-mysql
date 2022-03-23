@@ -88,4 +88,20 @@ function readAllHandicraft()
     return false;
   }
 }
+
+function readUserHandicraft($id)
+{
+  global $connection;
+
+  $query = "SELECT * FROM handicraft WHERE userid LIKE '$id'";
+
+  $result = mysqli_query($connection, $query);
+
+  if ($result) {
+    return $result;
+  } else {
+    return false;
+  }
+}
+
 ?>

@@ -1,3 +1,14 @@
+<?php
+require 'service-ddbb.php';
+require 'service-handicraft-read-from-id.php';
+require 'model/handicraft.php';
+
+if (!isset($_COOKIE['user'])) {
+  header('Location: ./');
+}
+
+loadUserHandicraftOnSession($_COOKIE['user']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +26,24 @@
 <body>
   <?php include './views/header.html' ?>
   <?php include './views/nav.html' ?>
+  <section>
+    <!-- PRINT HANDICRAFT -->
+    <?php for ($x = 0; $x < count($_SESSION['userhandicraft']); $x++) : ?>
+      <article>
+        <p><?php echo $_SESSION['userhandicraft'][$x]->get_id(); ?></p>
+        <p><?php echo $_SESSION['userhandicraft'][$x]->get_date(); ?></p>
+        <p><?php echo $_SESSION['userhandicraft'][$x]->get_user(); ?></p>
+        <p><?php echo $_SESSION['userhandicraft'][$x]->get_title(); ?></p>
+        <p><?php echo $_SESSION['userhandicraft'][$x]->get_description(); ?></p>
+        <?php if ($_SESSION['userhandicraft'][$x]->get_onsale() == 1) : ?>
+          <p><?php echo $_SESSION['userhandicraft'][$x]->get_price(); ?></p>
+        <?php else : ?>
+          <p>not for sale</p>
+        <?php endif; ?>
+        <img src="./img/<?php echo $_SESSION['userhandicraft'][$x]->get_img(); ?>" alt="<?php echo $_SESSION['userhandicraft'][$x]->get_title(); ?>">
+      </article>
+    <?php endfor; ?>
+  </section>
 </body>
 
 </html>

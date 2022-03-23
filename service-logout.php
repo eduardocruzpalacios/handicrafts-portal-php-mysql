@@ -3,6 +3,8 @@ session_start();
 session_destroy();
 setcookie('user', $user, time() - 3600);
 unset($_COOKIE['user']);
-header('Location: index.php');
+setcookie('islogged', 'islogged', time() - 3600);
+unset($_COOKIE['islogged']);
+header('Location: ./');
 exit();
 ?>

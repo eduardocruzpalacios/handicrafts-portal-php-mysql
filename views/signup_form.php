@@ -17,7 +17,6 @@
           ?>
         </span>
       <?php endif; ?>
-      <a href="index.php">Login</a>
     </fieldset>
   </form>
 </section>

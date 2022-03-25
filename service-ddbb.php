@@ -123,4 +123,23 @@ function createHandicraft($dateupload, $userid, $title, $description, $fragile, 
   }
 }
 
+function deleteHandicraft($id)
+{
+  global $connection;
+
+  $query = "DELETE FROM handicraft WHERE id = ?";
+
+  $stmt = $connection->prepare($query);
+
+  $stmt->bind_param('s', $id);
+
+  $result = $stmt->execute();
+
+  if ($result) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 ?>

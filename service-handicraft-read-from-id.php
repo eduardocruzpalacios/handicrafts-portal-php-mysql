@@ -13,8 +13,8 @@ function loadUserHandicraftOnSession($id)
         $handicraft->set_user($row[2]);
         $handicraft->set_title($row[3]);
         $handicraft->set_description($row[4]);
-        $handicraft->set_onsale($row[5]);
-        $handicraft->set_price($row[6]);
+        $handicraft->set_fragile($row[5]);
+        $handicraft->set_weight($row[6]);
         $handicraft->set_img($row[7]);
         array_push($_SESSION['userhandicraft'], $handicraft);
       }

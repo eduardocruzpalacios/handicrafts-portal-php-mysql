@@ -10,8 +10,8 @@ class Handicraft
   public $user;
   public $title;
   public $description;
-  public $onsale;
-  public $price;
+  public $fragile;
+  public $weight;
   public $img;
 
   function set_id($id)
@@ -39,14 +39,14 @@ class Handicraft
     $this->description = $description;
   }
 
-  function set_onsale($onsale)
+  function set_fragile($fragile)
   {
-    $this->onsale = $onsale;
+    $this->fragile = $fragile;
   }
 
-  function set_price($price)
+  function set_weight($weight)
   {
-    $this->price = $price;
+    $this->weight = $weight;
   }
 
   function set_img($img)
@@ -79,14 +79,14 @@ class Handicraft
     return $this->description;
   }
 
-  function get_onsale()
+  function get_fragile()
   {
-    return $this->onsale;
+    return $this->fragile;
   }
 
-  function get_price()
+  function get_weight()
   {
-    return $this->price;
+    return $this->weight;
   }
 
   function get_img()
@@ -94,4 +94,5 @@ class Handicraft
     return $this->img;
   }
 }
+
 ?>

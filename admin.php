@@ -24,8 +24,10 @@ loadUserHandicraftOnSession($_COOKIE['user']);
 </head>
 
 <body>
+
   <?php include './views/header.php' ?>
   <?php include './views/nav.php' ?>
+
   <section>
     <!-- PRINT HANDICRAFT -->
     <?php for ($x = 0; $x < count($_SESSION['userhandicraft']); $x++) : ?>
@@ -35,8 +37,8 @@ loadUserHandicraftOnSession($_COOKIE['user']);
         <p><?php echo $_SESSION['userhandicraft'][$x]->get_user(); ?></p>
         <p><?php echo $_SESSION['userhandicraft'][$x]->get_title(); ?></p>
         <p><?php echo $_SESSION['userhandicraft'][$x]->get_description(); ?></p>
-        <?php if ($_SESSION['userhandicraft'][$x]->get_onsale() == 1) : ?>
-          <p><?php echo $_SESSION['userhandicraft'][$x]->get_price(); ?></p>
+        <?php if ($_SESSION['userhandicraft'][$x]->get_fragile() == 1) : ?>
+          <p><?php echo $_SESSION['userhandicraft'][$x]->get_weight(); ?></p>
         <?php else : ?>
           <p>not for sale</p>
         <?php endif; ?>

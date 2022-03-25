@@ -34,11 +34,12 @@ loadHandicraftOnSession();
         <p><?php echo $_SESSION['handicraft'][$x]->get_user(); ?></p>
         <p><?php echo $_SESSION['handicraft'][$x]->get_title(); ?></p>
         <p><?php echo $_SESSION['handicraft'][$x]->get_description(); ?></p>
-        <?php if ($_SESSION['handicraft'][$x]->get_onsale() == 1) : ?>
-          <p><?php echo $_SESSION['handicraft'][$x]->get_price(); ?></p>
+        <?php if ($_SESSION['handicraft'][$x]->get_fragile() == 1) : ?>
+          <p>Fragile</p>
         <?php else : ?>
-          <p>not for sale</p>
+          <p>Resistent</p>
         <?php endif; ?>
+        <p><?php echo $_SESSION['handicraft'][$x]->get_weight(); ?></p>
         <img src="./img/<?php echo $_SESSION['handicraft'][$x]->get_img(); ?>" alt="<?php echo $_SESSION['handicraft'][$x]->get_title(); ?>">
       </article>
     <?php endfor; ?>

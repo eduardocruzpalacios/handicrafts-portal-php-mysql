@@ -1,12 +1,10 @@
 /* USERS */
-
 /* mock user */
 INSERT INTO
   `users` (`id`, `email`, `password`)
 VALUES
   ('admin', 'adming@admin.es', 'Admin+12')
-
-/* login */
+  /* login */
 SELECT
   id
 FROM
@@ -16,7 +14,6 @@ WHERE
   AND users.password = 'Admin+12';
 
 /* HANDICRAFT */
-
 /* mock */
 INSERT INTO
   `handicraft` (
@@ -25,8 +22,8 @@ INSERT INTO
     `userid`,
     `title`,
     `description`,
-    `onsale`,
-    `price`,
+    `fragile`,
+    `weight`,
     `imgname`
   )
 VALUES
@@ -36,20 +33,19 @@ VALUES
     'admin',
     'Prueba',
     'Cammpo largo bla bla blaCammpo largo bla bla bla Cammpo largo bla bla bla Cammpo largo bla bla bla ',
-    b'1',
+    b '1',
     '2.56',
     'mock-img.png'
   )
-
-  INSERT INTO
+INSERT INTO
   `handicraft` (
     `id`,
     `dateupload`,
     `userid`,
     `title`,
     `description`,
-    `onsale`,
-    `price`,
+    `fragile`,
+    `weight`,
     `imgname`
   )
 VALUES
@@ -59,7 +55,7 @@ VALUES
     'admin',
     'Prueba not on sale',
     'hello hello hello',
-    b'0',
+    b '0',
     NULL,
     'mock-img.png'
   )

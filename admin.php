@@ -8,6 +8,37 @@ if (!isset($_COOKIE['user'])) {
 }
 
 loadUserHandicraftOnSession($_COOKIE['user']);
+
+if (isset($_POST['create'])) {
+
+  $imgname = $_FILES["img"]["name"];
+
+  $tempname = $_FILES["img"]["tmp_name"];
+
+  $folder = "img/" . $imgname;
+
+  $fulldate = getdate();
+
+  $dateupload = "$fulldate[year]-$fulldate[mon]-$fulldate[mday]";
+
+  $userid = $_COOKIE['user'];
+
+  $title = $_POST['title'];
+  $description = $_POST['description'];
+  $weight = $_POST['weight'];
+
+  $fragile = false;
+  if (!empty($_POST['fragile'])) {
+    $fragile = true;
+  }
+
+  if (createHandicraft($dateupload, $userid, $title, $description, $fragile, $weight, $imgname)) {
+    move_uploaded_file($tempname, $folder);
+    $msg = 'Handicraft created successfully';
+  } else {
+    $msg = 'An error ocurred. Handicraft not created';
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,8 +55,37 @@ loadUserHandicraftOnSession($_COOKIE['user']);
 </head>
 
 <body>
+
   <?php include './views/header.php' ?>
   <?php include './views/nav.php' ?>
+
+  <section>
+    <!-- CREATE HANDICRAFT -->
+    <form action="" method="post" enctype="multipart/form-data">
+      <fieldset>
+        <legend>Handicraft data</legend>
+        <label for="title">Title:</label>
+        <input type="text" placeholder="Write something catching" id="title" name="title" required autofocus>
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" cols="30" rows="10" required>This thing is made with...</textarea>
+        <label for="fragile">Is fragile?</label>
+        <input type="checkbox" name="fragile" id="fragile" value="fragile">
+        <label for="weight">Weight (Kg):</label>
+        <input type="number" name="weight" id="weight" value="0">
+        <label for="img">Upload a photo:</label>
+        <input type="file" name="img" id="img" value="" required>
+        <input type="submit" name="create" value="Create">
+        <?php if (isset($msg)) : ?>
+          <span>
+            <?php
+            echo $msg;
+            ?>
+          </span>
+        <?php endif; ?>
+      </fieldset>
+    </form>
+  </section>
+
   <section>
     <!-- PRINT HANDICRAFT -->
     <?php for ($x = 0; $x < count($_SESSION['userhandicraft']); $x++) : ?>
@@ -35,8 +95,8 @@ loadUserHandicraftOnSession($_COOKIE['user']);
         <p><?php echo $_SESSION['userhandicraft'][$x]->get_user(); ?></p>
         <p><?php echo $_SESSION['userhandicraft'][$x]->get_title(); ?></p>
         <p><?php echo $_SESSION['userhandicraft'][$x]->get_description(); ?></p>
-        <?php if ($_SESSION['userhandicraft'][$x]->get_onsale() == 1) : ?>
-          <p><?php echo $_SESSION['userhandicraft'][$x]->get_price(); ?></p>
+        <?php if ($_SESSION['userhandicraft'][$x]->get_fragile() == 1) : ?>
+          <p><?php echo $_SESSION['userhandicraft'][$x]->get_weight(); ?></p>
         <?php else : ?>
           <p>not for sale</p>
         <?php endif; ?>

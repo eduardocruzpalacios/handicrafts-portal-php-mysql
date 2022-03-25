@@ -3,8 +3,9 @@
 INSERT INTO
   `users` (`id`, `email`, `password`)
 VALUES
-  ('admin', 'adming@admin.es', 'Admin+12')
-  /* login */
+  ('admin', 'adming@admin.es', 'Admin+12');
+
+/* login */
 SELECT
   id
 FROM
@@ -33,10 +34,11 @@ VALUES
     'admin',
     'Prueba',
     'Cammpo largo bla bla blaCammpo largo bla bla bla Cammpo largo bla bla bla Cammpo largo bla bla bla ',
-    b '1',
+    b'1',
     '2.56',
     'mock-img.png'
-  )
+  );
+
 INSERT INTO
   `handicraft` (
     `id`,
@@ -55,16 +57,16 @@ VALUES
     'admin',
     'Prueba not on sale',
     'hello hello hello',
-    b '0',
+    b'0',
     NULL,
     'mock-img.png'
-  )
+  );
 
 /* read all */
 SELECT
   *
 FROM
-  `handicraft`
+  `handicraft`;
 
 /* read some */
 SELECT
@@ -72,4 +74,10 @@ SELECT
 FROM
   handicraft
 WHERE
-  userid LIKE 'admin'
+  userid LIKE 'admin';
+
+/* delete */
+DELETE FROM
+  handicraft
+WHERE
+  id = 1;

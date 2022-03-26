@@ -36,12 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     if (!empty($_FILES["img"]["name"])) {
 
       $img = $_FILES["img"]["name"];
-
-      $imgname = $_FILES["img"]["name"];
       $tempname = $_FILES["img"]["tmp_name"];
-      $folder = "img/" . $imgname;
+      $folder = "img/" . $img;
 
-      if (updateHandicraft($id, $title, $description, $fragile, $weight, $imgname)) {
+      if (updateHandicraft($id, $title, $description, $fragile, $weight, $img)) {
         move_uploaded_file($tempname, $folder);
         $msg = 'Handicraft updated successfully';
       } else {

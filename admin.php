@@ -99,10 +99,11 @@ if (isset($_POST['create'])) {
         <p><?php echo $_SESSION['userhandicraft'][$x]->get_title(); ?></p>
         <p><?php echo $_SESSION['userhandicraft'][$x]->get_description(); ?></p>
         <?php if ($_SESSION['userhandicraft'][$x]->get_fragile() == 1) : ?>
-          <p><?php echo $_SESSION['userhandicraft'][$x]->get_weight(); ?> (g)</p>
+          <p>Fragile</p>
         <?php else : ?>
-          <p>not for sale</p>
+          <p>Resistent</p>
         <?php endif; ?>
+        <p><?php echo $_SESSION['userhandicraft'][$x]->get_weight(); ?> (g)</p>
         <img src="./img/<?php echo $_SESSION['userhandicraft'][$x]->get_img(); ?>" alt="<?php echo $_SESSION['userhandicraft'][$x]->get_title(); ?>">
         <form action="update.php" method="post">
           <input type="hidden" name="id" value="<?php echo $_SESSION['userhandicraft'][$x]->get_id(); ?>">

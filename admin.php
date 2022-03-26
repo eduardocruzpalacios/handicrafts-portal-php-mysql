@@ -1,6 +1,7 @@
 <?php
 require 'service-ddbb.php';
-require 'service-handicraft-read-from-id.php';
+require 'service-handicraft-read-all.php';
+require 'service-handicraft-read-by-userid.php';
 require 'model/handicraft.php';
 
 if (!isset($_COOKIE['user'])) {
@@ -34,6 +35,8 @@ if (isset($_POST['create'])) {
 
   if (createHandicraft($dateupload, $userid, $title, $description, $fragile, $weight, $imgname)) {
     move_uploaded_file($tempname, $folder);
+    loadHandicraftOnSession();
+    loadUserHandicraftOnSession($userid);
     $msg = 'Handicraft created successfully';
   } else {
     $msg = 'An error ocurred. Handicraft not created';

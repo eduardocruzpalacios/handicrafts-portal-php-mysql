@@ -104,6 +104,11 @@ if (isset($_POST['create'])) {
           <p>not for sale</p>
         <?php endif; ?>
         <img src="./img/<?php echo $_SESSION['userhandicraft'][$x]->get_img(); ?>" alt="<?php echo $_SESSION['userhandicraft'][$x]->get_title(); ?>">
+        <form action="update.php" method="post">
+          <input type="hidden" name="id" value="<?php echo $_SESSION['userhandicraft'][$x]->get_id(); ?>">
+          <input type="submit" value="edit">
+          <input type="hidden" name="fromadmin" value="fromadmin">
+        </form>
         <form action="service-handicraft-delete.php" method="post">
           <input type="hidden" name="id" value="<?php echo $_SESSION['userhandicraft'][$x]->get_id(); ?>">
           <input type="submit" value="delete">

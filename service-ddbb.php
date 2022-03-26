@@ -89,11 +89,26 @@ function readAllHandicraft()
   }
 }
 
-function readUserHandicraft($id)
+function readHandicraftByUserid($userid)
 {
   global $connection;
 
-  $query = "SELECT * FROM handicraft WHERE userid LIKE '$id'";
+  $query = "SELECT * FROM handicraft WHERE userid LIKE '$userid'";
+
+  $result = mysqli_query($connection, $query);
+
+  if ($result) {
+    return $result;
+  } else {
+    return false;
+  }
+}
+
+function readHandicraftById($id)
+{
+  global $connection;
+
+  $query = "SELECT * FROM handicraft WHERE id LIKE '$id'";
 
   $result = mysqli_query($connection, $query);
 
@@ -112,7 +127,7 @@ function createHandicraft($dateupload, $userid, $title, $description, $fragile, 
 
   $stmt = $connection->prepare($query);
 
-  $stmt->bind_param('ssssids', $dateupload, $userid, $title, $description, $fragile, $weight, $imgname);
+  $stmt->bind_param('ssssiis', $dateupload, $userid, $title, $description, $fragile, $weight, $imgname);
 
   $result = $stmt->execute();
 
@@ -132,6 +147,44 @@ function deleteHandicraft($id)
   $stmt = $connection->prepare($query);
 
   $stmt->bind_param('s', $id);
+
+  $result = $stmt->execute();
+
+  if ($result) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function updateHandicraftNoImg($id, $title, $description, $fragile, $weight)
+{
+  global $connection;
+
+  $query = "UPDATE handicraft SET title = ?, description = ?, fragile = ?, weight = ? WHERE id = ?";
+
+  $stmt = $connection->prepare($query);
+
+  $stmt->bind_param('ssiii', $title, $description, $fragile, $weight, $id);
+
+  $result = $stmt->execute();
+
+  if ($result) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function updateHandicraft($id, $title, $description, $fragile, $weight, $imgname)
+{
+  global $connection;
+
+  $query = "UPDATE handicraft SET title = ?, description = ?, fragile = ?, weight = ?, imgname = ? WHERE id = ?";
+
+  $stmt = $connection->prepare($query);
+
+  $stmt->bind_param('ssiisi', $title, $description, $fragile, $weight, $imgname, $id);
 
   $result = $stmt->execute();
 

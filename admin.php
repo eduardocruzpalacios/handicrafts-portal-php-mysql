@@ -70,7 +70,7 @@ if (isset($_POST['create'])) {
         <textarea name="description" id="description" cols="30" rows="10" required>This thing is made with...</textarea>
         <label for="fragile">Is fragile?</label>
         <input type="checkbox" name="fragile" id="fragile" value="fragile">
-        <label for="weight">Weight (Kg):</label>
+        <label for="weight">Weight (g):</label>
         <input type="number" name="weight" id="weight" value="0">
         <label for="img">Upload a photo:</label>
         <input type="file" name="img" id="img" value="" required>
@@ -96,7 +96,7 @@ if (isset($_POST['create'])) {
         <p><?php echo $_SESSION['userhandicraft'][$x]->get_title(); ?></p>
         <p><?php echo $_SESSION['userhandicraft'][$x]->get_description(); ?></p>
         <?php if ($_SESSION['userhandicraft'][$x]->get_fragile() == 1) : ?>
-          <p><?php echo $_SESSION['userhandicraft'][$x]->get_weight(); ?></p>
+          <p><?php echo $_SESSION['userhandicraft'][$x]->get_weight(); ?> (g)</p>
         <?php else : ?>
           <p>not for sale</p>
         <?php endif; ?>

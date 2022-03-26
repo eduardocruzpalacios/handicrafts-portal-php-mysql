@@ -1,9 +1,9 @@
 <?php
 
-function loadHandicraftOnSession()
+function loadUserHandicraftOnSession($userid)
 {
-  $_SESSION['handicraft'] = array();
-  $result = readAllHandicraft();
+  $_SESSION['userhandicraft'] = array();
+  $result = readHandicraftByUserid($userid);
   if ($result) {
     while ($row = mysqli_fetch_row($result)) {
       $handicraft = new Handicraft();
@@ -15,9 +15,7 @@ function loadHandicraftOnSession()
       $handicraft->set_fragile($row[5]);
       $handicraft->set_weight($row[6]);
       $handicraft->set_img($row[7]);
-      array_push($_SESSION['handicraft'], $handicraft);
+      array_push($_SESSION['userhandicraft'], $handicraft);
     }
   }
 }
-
-?>

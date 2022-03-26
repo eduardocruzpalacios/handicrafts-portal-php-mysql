@@ -39,7 +39,7 @@ loadHandicraftOnSession();
         <?php else : ?>
           <p>Resistent</p>
         <?php endif; ?>
-        <p><?php echo $_SESSION['handicraft'][$x]->get_weight(); ?></p>
+        <p><?php echo $_SESSION['handicraft'][$x]->get_weight(); ?> (g)</p>
         <img src="./img/<?php echo $_SESSION['handicraft'][$x]->get_img(); ?>" alt="<?php echo $_SESSION['handicraft'][$x]->get_title(); ?>">
       </article>
     <?php endfor; ?>

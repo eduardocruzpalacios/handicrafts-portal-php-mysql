@@ -1,6 +1,7 @@
 <?php
 require 'service-ddbb.php';
-require 'service-handicraft-read-from-id.php';
+require 'service-handicraft-read-all.php';
+require 'service-handicraft-read-by-userid.php';
 require 'model/handicraft.php';
 
 if (!isset($_COOKIE['user'])) {
@@ -34,6 +35,8 @@ if (isset($_POST['create'])) {
 
   if (createHandicraft($dateupload, $userid, $title, $description, $fragile, $weight, $imgname)) {
     move_uploaded_file($tempname, $folder);
+    loadHandicraftOnSession();
+    loadUserHandicraftOnSession($userid);
     $msg = 'Handicraft created successfully';
   } else {
     $msg = 'An error ocurred. Handicraft not created';
@@ -70,7 +73,7 @@ if (isset($_POST['create'])) {
         <textarea name="description" id="description" cols="30" rows="10" required>This thing is made with...</textarea>
         <label for="fragile">Is fragile?</label>
         <input type="checkbox" name="fragile" id="fragile" value="fragile">
-        <label for="weight">Weight (Kg):</label>
+        <label for="weight">Weight (g):</label>
         <input type="number" name="weight" id="weight" value="0">
         <label for="img">Upload a photo:</label>
         <input type="file" name="img" id="img" value="" required>
@@ -96,11 +99,17 @@ if (isset($_POST['create'])) {
         <p><?php echo $_SESSION['userhandicraft'][$x]->get_title(); ?></p>
         <p><?php echo $_SESSION['userhandicraft'][$x]->get_description(); ?></p>
         <?php if ($_SESSION['userhandicraft'][$x]->get_fragile() == 1) : ?>
-          <p><?php echo $_SESSION['userhandicraft'][$x]->get_weight(); ?></p>
+          <p>Fragile</p>
         <?php else : ?>
-          <p>not for sale</p>
+          <p>Resistent</p>
         <?php endif; ?>
+        <p><?php echo $_SESSION['userhandicraft'][$x]->get_weight(); ?> (g)</p>
         <img src="./img/<?php echo $_SESSION['userhandicraft'][$x]->get_img(); ?>" alt="<?php echo $_SESSION['userhandicraft'][$x]->get_title(); ?>">
+        <form action="update.php" method="post">
+          <input type="hidden" name="id" value="<?php echo $_SESSION['userhandicraft'][$x]->get_id(); ?>">
+          <input type="submit" value="edit">
+          <input type="hidden" name="fromadmin" value="fromadmin">
+        </form>
         <form action="service-handicraft-delete.php" method="post">
           <input type="hidden" name="id" value="<?php echo $_SESSION['userhandicraft'][$x]->get_id(); ?>">
           <input type="submit" value="delete">

@@ -19,6 +19,47 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
       $img = $row[7];
     }
   }
+} else {
+
+  if (isset($_POST['update'])) {
+
+    $id = $_POST['id'];
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $weight = $_POST['weight'];
+
+    $fragile = false;
+    if (!empty($_POST['fragile'])) {
+      $fragile = true;
+    }
+
+    if (!empty($_FILES["img"]["name"])) {
+
+      $img = $_FILES["img"]["name"];
+
+      $imgname = $_FILES["img"]["name"];
+      $tempname = $_FILES["img"]["tmp_name"];
+      $folder = "img/" . $imgname;
+
+      if (updateHandicraft($id, $title, $description, $fragile, $weight, $imgname)) {
+        move_uploaded_file($tempname, $folder);
+        $msg = 'Handicraft updated successfully';
+      } else {
+        $msg = 'An error ocurred. Handicraft not updated';
+      }
+
+    } else {
+
+      $img = $_POST['imgname'];
+
+      if (updateHandicraftNoImg($id, $title, $description, $fragile, $weight)) {
+        $msg = 'Handicraft updated successfully';
+      } else {
+        $msg = 'An error ocurred. Handicraft not updated';
+      }
+
+    }
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -59,6 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         <img src="./img/<?php echo $img ?>">
         <label for="img">Change the photo:</label>
         <input type="file" name="img" id="img" value="">
+        <input type="hidden" name="imgname" value="<?php echo $img; ?>">
         <input type="submit" name="update" value="Update">
         <input type="hidden" name="id" value="<?php echo $id; ?>">
         <?php if (isset($msg)) : ?>

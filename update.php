@@ -1,9 +1,25 @@
 <?php
+require 'service-ddbb.php';
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
   header('Location: admin.php');
   exit();
-} 
+} else if (isset($_POST['fromadmin'])) {
+
+  $id = $_POST['id'];
+
+  $result = readHandicraftById($id);
+  if ($result) {
+    while ($row = mysqli_fetch_row($result)) {
+      $date = $row[1];
+      $title = $row[3];
+      $description = $row[4];
+      $fragile = $row[5];
+      $weight = $row[6];
+      $img = $row[7];
+    }
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +41,36 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
   <?php include './views/nav.php' ?>
 
   <h2>Update this handicraft</h2>
+
+  <section>
+    <form action="" method="post" enctype="multipart/form-data">
+      <fieldset>
+        <legend>Handicraft data</legend>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="<?php echo $title ?>" required autofocus>
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" cols="30" rows="10" required><?php echo $description ?></textarea>
+        <label for="fragile">Is fragile?</label>
+        <input type="checkbox" name="fragile" id="fragile" value="fragile" <?php if ($fragile == 1) {
+                                                                              echo 'checked';
+                                                                            } ?>>
+        <label for="weight">Weight (g):</label>
+        <input type="number" name="weight" id="weight" value="<?php echo $weight ?>">
+        <img src="./img/<?php echo $img ?>">
+        <label for="img">Change the photo:</label>
+        <input type="file" name="img" id="img" value="">
+        <input type="submit" name="update" value="Update">
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
+        <?php if (isset($msg)) : ?>
+          <span>
+            <?php
+            echo $msg;
+            ?>
+          </span>
+        <?php endif; ?>
+      </fieldset>
+    </form>
+  </section>
 
 </body>
 

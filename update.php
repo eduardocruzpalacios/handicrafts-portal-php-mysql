@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
   $result = readHandicraftById($id);
   if ($result) {
     while ($row = mysqli_fetch_row($result)) {
-      $date = $row[1];
       $title = $row[3];
       $description = $row[4];
       $fragile = $row[5];
@@ -45,7 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
       } else {
         $msg = 'An error ocurred. Handicraft not updated';
       }
-
     } else {
 
       $img = $_POST['imgname'];
@@ -55,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
       } else {
         $msg = 'An error ocurred. Handicraft not updated';
       }
-
     }
   }
 }

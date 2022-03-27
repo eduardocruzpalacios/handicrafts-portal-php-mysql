@@ -18,9 +18,9 @@ if (isset($_POST['create'])) {
 
   $folder = "img/" . $imgname;
 
-  $fulldate = getdate();
+  $fulldateupload = getdate();
 
-  $dateupload = "$fulldate[year]-$fulldate[mon]-$fulldate[mday]";
+  $dateupload = "$fulldateupload[year]-$fulldateupload[mon]-$fulldateupload[mday]";
 
   $userid = $_COOKIE['user'];
 
@@ -94,7 +94,7 @@ if (isset($_POST['create'])) {
     <?php for ($x = 0; $x < count($_SESSION['userhandicraft']); $x++) : ?>
       <article>
         <p><?php echo $_SESSION['userhandicraft'][$x]->get_id(); ?></p>
-        <p><?php echo $_SESSION['userhandicraft'][$x]->get_date(); ?></p>
+        <p><?php echo $_SESSION['userhandicraft'][$x]->get_dateupload(); ?></p>
         <p><?php echo $_SESSION['userhandicraft'][$x]->get_user(); ?></p>
         <p><?php echo $_SESSION['userhandicraft'][$x]->get_title(); ?></p>
         <p><?php echo $_SESSION['userhandicraft'][$x]->get_description(); ?></p>

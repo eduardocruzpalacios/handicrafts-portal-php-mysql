@@ -54,15 +54,15 @@ function userEmailExists($email)
   }
 }
 
-function createUser($id, $email, $password)
+function createUser($id, $name, $email, $password)
 {
   global $connection;
 
-  $query = "INSERT INTO users (id, email, password) VALUES (?, ?, ?)";
+  $query = "INSERT INTO users (id, name, email, password) VALUES (?, ?, ?, ?)";
 
   $stmt = $connection->prepare($query);
 
-  $stmt->bind_param('sss', $id, $email, $password);
+  $stmt->bind_param('ssss', $id, $name, $email, $password);
 
   $result = $stmt->execute();
 
@@ -71,6 +71,21 @@ function createUser($id, $email, $password)
   } else {
     return false;
   }
+}
+
+function readUserName($id) {
+    global $connection;
+
+    $query = "SELECT name FROM users WHERE id = '$id'";
+
+    $result = mysqli_query($connection, $query);
+  
+    if ($result) {
+      return mysqli_fetch_row($result)[0];
+    } else {
+      echo ' false';
+      return false;
+    }
 }
 
 // HANDICRAFT

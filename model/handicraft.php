@@ -6,7 +6,7 @@ class Handicraft
   }
 
   public $id;
-  public $date;
+  public $dateupload;
   public $user;
   public $title;
   public $description;
@@ -19,9 +19,9 @@ class Handicraft
     $this->id = $id;
   }
 
-  function set_date($date)
+  function set_dateupload($dateupload)
   {
-    $this->date = $date;
+    $this->dateupload = $dateupload;
   }
 
   function set_user($user)
@@ -59,9 +59,9 @@ class Handicraft
     return $this->id;
   }
 
-  function get_date()
+  function get_dateupload()
   {
-    return $this->date;
+    return $this->dateupload;
   }
 
   function get_user()
@@ -94,5 +94,3 @@ class Handicraft
     return $this->img;
   }
 }
-
-?>

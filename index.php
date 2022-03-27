@@ -30,7 +30,7 @@ loadHandicraftOnSession();
     <?php for ($x = 0; $x < count($_SESSION['handicraft']); $x++) : ?>
       <article>
         <p><?php echo $_SESSION['handicraft'][$x]->get_id(); ?></p>
-        <p><?php echo $_SESSION['handicraft'][$x]->get_date(); ?></p>
+        <p><?php echo $_SESSION['handicraft'][$x]->get_dateupload(); ?></p>
         <p><?php echo $_SESSION['handicraft'][$x]->get_user(); ?></p>
         <p><?php echo $_SESSION['handicraft'][$x]->get_title(); ?></p>
         <p><?php echo $_SESSION['handicraft'][$x]->get_description(); ?></p>

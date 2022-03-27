@@ -1,9 +1,9 @@
 /* USERS */
 /* mock user */
 INSERT INTO
-  `users` (`id`, `email`, `password`)
+  `users` (`id`, `name`, `email`, `password`)
 VALUES
-  ('admin', 'adming@admin.es', 'Admin+12');
+  ('admin', 'Administrator Doe', 'adming@admin.es', 'Admin+12');
 
 /* login */
 SELECT
@@ -13,6 +13,14 @@ FROM
 WHERE
   users.id = 'admin'
   AND users.password = 'Admin+12';
+
+/* read name by id*/
+SELECT
+  name
+FROM
+  `users`
+WHERE
+  id = 'admin';
 
 /* HANDICRAFT */
 /* mock */

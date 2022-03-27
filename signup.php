@@ -4,21 +4,21 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+  $id = $_POST['id'];
   $name = $_POST['name'];
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  $userIdExists = userIdExists($name);
+  $userIdExists = userIdExists($id);
 
   if ($userIdExists) {
-    echo $userIdExists;
     $error = 'Sorry, that user name is not available';
   } else {
     $userEmailExists = userEmailExists($email);
     if ($userEmailExists) {
       $error = 'Sorry, that email is not available';
     } else {
-      createUser($name, $email, $password);
+      createUser($id, $name, $email, $password);
       setcookie('user', $name, time() + 3600);
       header('Location: admin.php');
       exit();

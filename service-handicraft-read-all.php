@@ -9,7 +9,9 @@ function loadHandicraftOnSession()
       $handicraft = new Handicraft();
       $handicraft->set_id($row[0]);
       $handicraft->set_dateupload($row[1]);
-      $handicraft->set_user($row[2]);
+      $userid = $row[2];
+      $username = readUserName($userid);
+      $handicraft->set_user($username);
       $handicraft->set_title($row[3]);
       $handicraft->set_description($row[4]);
       $handicraft->set_fragile($row[5]);

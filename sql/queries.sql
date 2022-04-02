@@ -1,9 +1,14 @@
 /* USERS */
 /* mock user */
 INSERT INTO
-  `users` (`id`, `name`, `email`, `password`)
+  users (id, name, email, password)
 VALUES
-  ('admin', 'Administrator Doe', 'adming@admin.es', 'Admin+12');
+  (
+    'admin',
+    'Administrator Doe',
+    'adming@admin.es',
+    'Admin+12'
+  );
 
 /* login */
 SELECT
@@ -18,22 +23,22 @@ WHERE
 SELECT
   name
 FROM
-  `users`
+  users
 WHERE
   id = 'admin';
 
 /* HANDICRAFT */
 /* mock */
 INSERT INTO
-  `handicraft` (
-    `id`,
-    `dateupload`,
-    `userid`,
-    `title`,
-    `description`,
-    `fragile`,
-    `weight`,
-    `imgname`
+  handicraft (
+    id,
+    dateupload,
+    userid,
+    title,
+    description,
+    fragile,
+    weight,
+    imgname
   )
 VALUES
   (
@@ -42,21 +47,21 @@ VALUES
     'admin',
     'Prueba',
     'Cammpo largo bla bla blaCammpo largo bla bla bla Cammpo largo bla bla bla Cammpo largo bla bla bla ',
-    b'1',
+    b '1',
     '2.56',
     'mock-img.png'
   );
 
 INSERT INTO
-  `handicraft` (
-    `id`,
-    `dateupload`,
-    `userid`,
-    `title`,
-    `description`,
-    `fragile`,
-    `weight`,
-    `imgname`
+  handicraft (
+    id,
+    dateupload,
+    userid,
+    title,
+    description,
+    fragile,
+    weight,
+    imgname
   )
 VALUES
   (
@@ -65,7 +70,7 @@ VALUES
     'admin',
     'Prueba not on sale',
     'hello hello hello',
-    b'0',
+    b '0',
     NULL,
     'mock-img.png'
   );
@@ -74,7 +79,7 @@ VALUES
 SELECT
   *
 FROM
-  `handicraft`;
+  handicraft;
 
 /* read some */
 SELECT

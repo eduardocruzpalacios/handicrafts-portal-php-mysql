@@ -3,7 +3,7 @@
   <form action="" method="post">
     <fieldset>
       <legend>User data</legend>
-      <label for="user">Username:</label>
+      <label for="user">User id:</label>
       <input type="text" placeholder="Sancho Panza" id="user" name="user" required autofocus>
       <label for="password">Password:</label>
       <input type="password" placeholder="********" id="password" name="password" required maxlength="20" minlength="8">

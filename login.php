@@ -13,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if ($result) {
     setcookie('user', $id, time() + 3600);
-    setcookie('islogged', 'islogged', time() + 3600);
     header('Location: admin.php');
     exit();
   } else {

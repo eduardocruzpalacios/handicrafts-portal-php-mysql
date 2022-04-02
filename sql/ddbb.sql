@@ -1,8 +1,8 @@
 /* DDBB */
-CREATE DATABASE handicraft DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+CREATE DATABASE IF NOT EXISTS handicraft DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 
 /* TABLE USERS */
-CREATE TABLE handicraft.users (
+CREATE TABLE IF NOT EXISTS users (
   id VARCHAR(20) NOT NULL,
   name VARCHAR(30) NOT NULL,
   email VARCHAR(50) NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE handicraft.users (
 ) ENGINE = InnoDB;
 
 /* TABLE HANDICRAFT */
-CREATE TABLE handicraft.handicrafts (
+CREATE TABLE IF NOT EXISTS handicrafts (
   id INT NOT NULL AUTO_INCREMENT,
   dateupload DATE NOT NULL,
   userid VARCHAR(20) NOT NULL,

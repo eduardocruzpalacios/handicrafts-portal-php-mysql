@@ -30,7 +30,7 @@ WHERE
 /* HANDICRAFT */
 /* mock */
 INSERT INTO
-  handicraft (
+  handicrafts (
     id,
     dateupload,
     userid,
@@ -53,7 +53,7 @@ VALUES
   );
 
 INSERT INTO
-  handicraft (
+  handicrafts (
     id,
     dateupload,
     userid,

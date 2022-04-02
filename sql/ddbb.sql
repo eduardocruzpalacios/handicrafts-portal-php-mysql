@@ -11,7 +11,7 @@ CREATE TABLE handicraft.users (
 ) ENGINE = InnoDB;
 
 /* TABLE HANDICRAFT */
-CREATE TABLE handicraft.handicraft (
+CREATE TABLE handicraft.handicrafts (
   id INT NOT NULL AUTO_INCREMENT,
   dateupload DATE NOT NULL,
   userid VARCHAR(20) NOT NULL,

@@ -93,7 +93,7 @@ function readAllHandicraft()
 {
   global $connection;
 
-  $query = "SELECT * FROM handicraft";
+  $query = "SELECT * FROM handicrafts";
 
   $result = mysqli_query($connection, $query);
 
@@ -108,7 +108,7 @@ function readHandicraftByUserid($userid)
 {
   global $connection;
 
-  $query = "SELECT * FROM handicraft WHERE userid LIKE '$userid'";
+  $query = "SELECT * FROM handicrafts WHERE userid LIKE '$userid'";
 
   $result = mysqli_query($connection, $query);
 
@@ -123,7 +123,7 @@ function readHandicraftById($id)
 {
   global $connection;
 
-  $query = "SELECT * FROM handicraft WHERE id LIKE '$id'";
+  $query = "SELECT * FROM handicrafts WHERE id LIKE '$id'";
 
   $result = mysqli_query($connection, $query);
 
@@ -138,7 +138,7 @@ function createHandicraft($dateupload, $userid, $title, $description, $fragile, 
 {
   global $connection;
 
-  $query = "INSERT INTO handicraft (dateupload, userid, title, description, fragile, weight, imgname) VALUES (?, ?, ?,?, ?, ?, ?)";
+  $query = "INSERT INTO handicrafts (dateupload, userid, title, description, fragile, weight, imgname) VALUES (?, ?, ?,?, ?, ?, ?)";
 
   $stmt = $connection->prepare($query);
 
@@ -157,7 +157,7 @@ function deleteHandicraft($id)
 {
   global $connection;
 
-  $query = "DELETE FROM handicraft WHERE id = ?";
+  $query = "DELETE FROM handicrafts WHERE id = ?";
 
   $stmt = $connection->prepare($query);
 
@@ -176,7 +176,7 @@ function updateHandicraftNoImg($id, $title, $description, $fragile, $weight)
 {
   global $connection;
 
-  $query = "UPDATE handicraft SET title = ?, description = ?, fragile = ?, weight = ? WHERE id = ?";
+  $query = "UPDATE handicrafts SET title = ?, description = ?, fragile = ?, weight = ? WHERE id = ?";
 
   $stmt = $connection->prepare($query);
 
@@ -195,7 +195,7 @@ function updateHandicraft($id, $title, $description, $fragile, $weight, $imgname
 {
   global $connection;
 
-  $query = "UPDATE handicraft SET title = ?, description = ?, fragile = ?, weight = ?, imgname = ? WHERE id = ?";
+  $query = "UPDATE handicrafts SET title = ?, description = ?, fragile = ?, weight = ?, imgname = ? WHERE id = ?";
 
   $stmt = $connection->prepare($query);
 

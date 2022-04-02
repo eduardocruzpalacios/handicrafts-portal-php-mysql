@@ -62,22 +62,36 @@ if (isset($_POST['create'])) {
   <?php include './views/header.php' ?>
   <?php include './views/nav.php' ?>
 
-  <section>
-    <!-- CREATE HANDICRAFT -->
+  <section class="container mt-3">
+    <h2>Admin</h2>
+  </section>
+
+  <section class="container mt-5">
+    <h3>Create a new handicraft</h3>
     <form action="" method="post" enctype="multipart/form-data">
       <fieldset>
         <legend>Handicraft data</legend>
-        <label for="title">Title:</label>
-        <input type="text" placeholder="Write something catching" id="title" name="title" required autofocus>
-        <label for="description">Description:</label>
-        <textarea name="description" id="description" cols="30" rows="10" required>This thing is made with...</textarea>
-        <label for="fragile">Is fragile?</label>
-        <input type="checkbox" name="fragile" id="fragile" value="fragile">
-        <label for="weight">Weight (g):</label>
-        <input type="number" name="weight" id="weight" value="0">
-        <label for="img">Upload a photo:</label>
-        <input type="file" name="img" id="img" value="" required>
-        <input type="submit" name="create" value="Create">
+        <div class="form-group mb-3">
+          <label for="title" class="form-label">Title:</label>
+          <input type="text" placeholder="Write something catching" id="title" name="title" required autofocus class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="description" class="form-label">Description:</label>
+          <textarea name="description" id="description" cols="30" rows="10" required class="form-control">This thing is made with...</textarea>
+        </div>
+        <div class="form-group">
+          <label for="fragile" class="form-check-label">Is fragile?</label>
+          <input type="checkbox" name="fragile" id="fragile" value="fragile" class="form-check-input">
+        </div>
+        <div class="form-group">
+          <label for="weight" class="form-label">Weight (g):</label>
+          <input type="number" name="weight" id="weight" value="0" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="img" class="form-label">Upload a photo:</label>
+          <input type="file" name="img" id="img" value="" required class="form-control">
+        </div>
+        <input type="submit" name="create" value="Create" class="btn btn-primary mt-3">
         <?php if (isset($msg)) : ?>
           <span>
             <?php
@@ -89,33 +103,34 @@ if (isset($_POST['create'])) {
     </form>
   </section>
 
-  <section>
-    <!-- PRINT HANDICRAFT -->
-    <?php for ($x = 0; $x < count($_SESSION['userhandicraft']); $x++) : ?>
-      <article>
-        <p><?php echo $_SESSION['userhandicraft'][$x]->get_id(); ?></p>
-        <p><?php echo $_SESSION['userhandicraft'][$x]->get_dateupload(); ?></p>
-        <p><?php echo $_SESSION['userhandicraft'][$x]->get_user(); ?></p>
-        <p><?php echo $_SESSION['userhandicraft'][$x]->get_title(); ?></p>
-        <p><?php echo $_SESSION['userhandicraft'][$x]->get_description(); ?></p>
-        <?php if ($_SESSION['userhandicraft'][$x]->get_fragile() == 1) : ?>
-          <p>Fragile</p>
-        <?php else : ?>
-          <p>Resistent</p>
-        <?php endif; ?>
-        <p><?php echo $_SESSION['userhandicraft'][$x]->get_weight(); ?> (g)</p>
-        <img src="./img/<?php echo $_SESSION['userhandicraft'][$x]->get_img(); ?>" alt="<?php echo $_SESSION['userhandicraft'][$x]->get_title(); ?>">
-        <form action="update.php" method="post">
-          <input type="hidden" name="id" value="<?php echo $_SESSION['userhandicraft'][$x]->get_id(); ?>">
-          <input type="submit" value="edit">
-          <input type="hidden" name="fromadmin" value="fromadmin">
-        </form>
-        <form action="service-handicraft-delete.php" method="post">
-          <input type="hidden" name="id" value="<?php echo $_SESSION['userhandicraft'][$x]->get_id(); ?>">
-          <input type="submit" value="delete">
-        </form>
-      </article>
-    <?php endfor; ?>
+  <section class="container mt-5">
+    <h3>All your handicrafts</h3>
+    <div class="row row-cols-2">
+      <?php for ($x = 0; $x < count($_SESSION['userhandicraft']); $x++) : ?>
+        <article class="col">
+          <h3><?php echo $_SESSION['userhandicraft'][$x]->get_title(); ?></h3>
+          <p><?php echo $_SESSION['userhandicraft'][$x]->get_description(); ?></p>
+          <?php if ($_SESSION['userhandicraft'][$x]->get_fragile() == 1) : ?>
+            <p>Fragile</p>
+          <?php else : ?>
+            <p>Resistent</p>
+          <?php endif; ?>
+          <p><?php echo $_SESSION['userhandicraft'][$x]->get_weight(); ?> (g)</p>
+          <img src="./img/<?php echo $_SESSION['userhandicraft'][$x]->get_img(); ?>" alt="<?php echo $_SESSION['userhandicraft'][$x]->get_title(); ?>" class="img-fluid">
+          <div class="container d-flex">
+            <form action="update.php" method="post" class="w-25">
+              <input type="hidden" name="id" value="<?php echo $_SESSION['userhandicraft'][$x]->get_id(); ?>">
+              <input type="submit" value="edit" class="btn btn-success">
+              <input type="hidden" name="fromadmin" value="fromadmin">
+            </form>
+            <form action="service-handicraft-delete.php" method="post">
+              <input type="hidden" name="id" value="<?php echo $_SESSION['userhandicraft'][$x]->get_id(); ?>">
+              <input type="submit" value="delete" class="btn btn-danger">
+            </form>
+          </div>
+        </article>
+      <?php endfor; ?>
+    </div>
   </section>
 </body>
 

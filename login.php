@@ -38,6 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
   <?php include './views/header.php' ?>
   <?php include './views/nav.php' ?>
+  <section class="container mt-3 mb-3">
+    <h2>Login</h2>
+  </section>
   <?php include './views/login_form.php' ?>
 </body>
 

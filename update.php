@@ -76,27 +76,39 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
   <?php include './views/header.php' ?>
   <?php include './views/nav.php' ?>
 
-  <h2>Update this handicraft</h2>
+  <section class="container mt-3">
+    <h2>Update this handicraft</h2>
+  </section>
 
-  <section>
+  <section class="container mt-5 mb-5">
     <form action="" method="post" enctype="multipart/form-data">
       <fieldset>
         <legend>Handicraft data</legend>
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" value="<?php echo $title ?>" required autofocus>
-        <label for="description">Description:</label>
-        <textarea name="description" id="description" cols="30" rows="10" required><?php echo $description ?></textarea>
-        <label for="fragile">Is fragile?</label>
-        <input type="checkbox" name="fragile" id="fragile" value="fragile" <?php if ($fragile == 1) {
-                                                                              echo 'checked';
-                                                                            } ?>>
-        <label for="weight">Weight (g):</label>
-        <input type="number" name="weight" id="weight" value="<?php echo $weight ?>">
-        <img src="./img/<?php echo $img ?>">
-        <label for="img">Change the photo:</label>
-        <input type="file" name="img" id="img" value="">
+        <div class="form-group mb-3">
+          <label for="title" class="form-label">Title:</label>
+          <input type="text" id="title" name="title" value="<?php echo $title ?>" required autofocus class="form-control">
+        </div>
+        <div class="form-group mb-3">
+          <label for="description" class="form-label">Description:</label>
+          <textarea name="description" id="description" cols="30" rows="10" required class="form-control"><?php echo $description ?></textarea>
+        </div>
+        <div class="form-group mb-3">
+          <label for="fragile" class="form-check-label">Is fragile?</label>
+          <input type="checkbox" name="fragile" id="fragile" value="fragile" class="form-check-input" <?php if ($fragile == 1) {
+                                                                                                        echo 'checked';
+                                                                                                      } ?>>
+        </div>
+        <div class="form-group mb-3">
+          <label for="weight" class="form-label">Weight (g):</label>
+          <input type="number" name="weight" id="weight" value="<?php echo $weight ?>" class="form-control">
+        </div>
+        <div class="form-group mb-3">
+          <img src="./img/<?php echo $img ?>" class="img-fluid">
+          <label for="img" class="form-label">Change the photo:</label>
+          <input type="file" name="img" id="img" value="" class="form-control">
+        </div>
         <input type="hidden" name="imgname" value="<?php echo $img; ?>">
-        <input type="submit" name="update" value="Update">
+        <input type="submit" name="update" value="Update" class="btn btn-success">
         <input type="hidden" name="id" value="<?php echo $id; ?>">
         <?php if (isset($msg)) : ?>
           <span>

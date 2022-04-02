@@ -26,23 +26,26 @@ loadHandicraftOnSession();
 <body>
   <?php include './views/header.php' ?>
   <?php include './views/nav.php' ?>
-  <section>
-    <?php for ($x = 0; $x < count($_SESSION['handicraft']); $x++) : ?>
-      <article>
-        <p><?php echo $_SESSION['handicraft'][$x]->get_id(); ?></p>
-        <p><?php echo $_SESSION['handicraft'][$x]->get_dateupload(); ?></p>
-        <p><?php echo $_SESSION['handicraft'][$x]->get_user(); ?></p>
-        <p><?php echo $_SESSION['handicraft'][$x]->get_title(); ?></p>
-        <p><?php echo $_SESSION['handicraft'][$x]->get_description(); ?></p>
-        <?php if ($_SESSION['handicraft'][$x]->get_fragile() == 1) : ?>
-          <p>Fragile</p>
-        <?php else : ?>
-          <p>Resistent</p>
-        <?php endif; ?>
-        <p><?php echo $_SESSION['handicraft'][$x]->get_weight(); ?> (g)</p>
-        <img src="./img/<?php echo $_SESSION['handicraft'][$x]->get_img(); ?>" alt="<?php echo $_SESSION['handicraft'][$x]->get_title(); ?>">
-      </article>
-    <?php endfor; ?>
+  <section class="container mt-3">
+    <h2>Home</h2>
+  </section>
+  <section class="container mt-3 mb-5">
+    <div class="row row-cols-2">
+      <?php for ($x = 0; $x < count($_SESSION['handicraft']); $x++) : ?>
+        <article class="col">
+          <h3><?php echo $_SESSION['handicraft'][$x]->get_title(); ?></h3>
+          <p><?php echo $_SESSION['handicraft'][$x]->get_description(); ?></p>
+          <?php if ($_SESSION['handicraft'][$x]->get_fragile() == 1) : ?>
+            <p>Fragile</p>
+          <?php else : ?>
+            <p>Resistent</p>
+          <?php endif; ?>
+          <p><?php echo $_SESSION['handicraft'][$x]->get_weight(); ?> (g)</p>
+          <img src="./img/<?php echo $_SESSION['handicraft'][$x]->get_img(); ?>" alt="<?php echo $_SESSION['handicraft'][$x]->get_title(); ?>" class="img-fluid">
+          <p>Upload by <span class="text-info"><?php echo $_SESSION['handicraft'][$x]->get_user(); ?></span> on <span class="text-info"><?php echo $_SESSION['handicraft'][$x]->get_dateupload(); ?></span></p>
+        </article>
+      <?php endfor; ?>
+    </div>
   </section>
 </body>
 

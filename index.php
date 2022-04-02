@@ -29,7 +29,7 @@ loadHandicraftOnSession();
   <section class="container mt-3">
     <h2>Home</h2>
   </section>
-  <section class="container mt-3">
+  <section class="container mt-3 mb-5">
     <div class="row row-cols-2">
       <?php for ($x = 0; $x < count($_SESSION['handicraft']); $x++) : ?>
         <article class="col">

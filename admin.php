@@ -103,7 +103,7 @@ if (isset($_POST['create'])) {
     </form>
   </section>
 
-  <section class="container mt-5">
+  <section class="container mt-5 mb-5">
     <h3>All your handicrafts</h3>
     <div class="row row-cols-2">
       <?php for ($x = 0; $x < count($_SESSION['userhandicraft']); $x++) : ?>

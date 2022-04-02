@@ -1,5 +1,4 @@
 <section class="container">
-  <h2>Login</h2>
   <form action="" method="post">
     <fieldset>
       <legend>User data</legend>

@@ -8,7 +8,7 @@ Users logged can logout and are allowed to enter an admin view where they can pe
 - Update
 - Delete
 
-SQL statements to create the DDBB and tables is provided.
+SQL statements to create the DDBB and tables are provided.
 ## Technologies
 - PHP 7.3.29
 - MySQL

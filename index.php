@@ -10,6 +10,9 @@ if (!(isset($_GET['action']))) {
     case 'login':
       LoginController::loginPage();
       break;
+    case 'tryLogin':
+      LoginController::tryLogin($_POST['user'], $_POST['password']);
+      break;
     case 'home':
     default:
       HomeController::home();

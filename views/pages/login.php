@@ -1,26 +1,3 @@
-<?php
-
-require 'service-ddbb.php';
-
-session_start();
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-  $id = $_POST['user'];
-  $password = $_POST['password'];
-
-  $result = login($id, $password);
-
-  if ($result) {
-    setcookie('user', $id, time() + 3600);
-    header('Location: admin.php');
-    exit();
-  } else {
-    $error = 'Wrong user or password';
-  }
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top p-4">
   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
     <li class=" nav-item">
-      <a href="./" class="nav-link">Home</a>
+      <a href="./?action=home" class="nav-link">Home</a>
     </li>
     <?php if (!isset($_COOKIE['user'])) : ?>
       <li class="nav-item">

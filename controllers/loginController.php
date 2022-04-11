@@ -18,6 +18,10 @@ class LoginController
 
   public static function tryLogin($id, $password)
   {
+    session_start();
+    if (isLoggedIn()) {
+      redirect('?action=admin');
+    }
     if (User::login($id, $password)) {
       session_start();
       session_regenerate_id(true);

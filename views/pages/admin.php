@@ -1,48 +1,3 @@
-<?php
-require 'service-ddbb.php';
-require 'service-handicraft-read-all.php';
-require 'service-handicraft-read-by-userid.php';
-require 'model/handicraft.php';
-
-if (!isset($_COOKIE['user'])) {
-  header('Location: ./');
-}
-
-loadUserHandicraftOnSession($_COOKIE['user']);
-
-if (isset($_POST['create'])) {
-
-  $imgname = $_FILES["img"]["name"];
-
-  $tempname = $_FILES["img"]["tmp_name"];
-
-  $folder = "img/" . $imgname;
-
-  $fulldateupload = getdate();
-
-  $dateupload = "$fulldateupload[year]-$fulldateupload[mon]-$fulldateupload[mday]";
-
-  $userid = $_COOKIE['user'];
-
-  $title = $_POST['title'];
-  $description = $_POST['description'];
-  $weight = $_POST['weight'];
-
-  $fragile = false;
-  if (!empty($_POST['fragile'])) {
-    $fragile = true;
-  }
-
-  if (createHandicraft($dateupload, $userid, $title, $description, $fragile, $weight, $imgname)) {
-    move_uploaded_file($tempname, $folder);
-    loadHandicraftOnSession();
-    loadUserHandicraftOnSession($userid);
-    $msg = 'Handicraft created successfully';
-  } else {
-    $msg = 'An error ocurred. Handicraft not created';
-  }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,8 +14,8 @@ if (isset($_POST['create'])) {
 
 <body>
 
-  <?php include './views/header.php' ?>
-  <?php include './views/nav.php' ?>
+  <?php include 'views/partials/header.php' ?>
+  <?php include 'views/partials/nav.php' ?>
 
   <section class="container mt-3">
     <h2>Admin</h2>
@@ -106,30 +61,31 @@ if (isset($_POST['create'])) {
   <section class="container mt-5 mb-5">
     <h3>All your handicrafts</h3>
     <div class="row row-cols-2">
-      <?php for ($x = 0; $x < count($_SESSION['userhandicraft']); $x++) : ?>
+      <?php while ($row = mysqli_fetch_row($user_handicrafts)) : ?>
         <article class="col">
-          <h3><?php echo $_SESSION['userhandicraft'][$x]->get_title(); ?></h3>
-          <p><?php echo $_SESSION['userhandicraft'][$x]->get_description(); ?></p>
-          <?php if ($_SESSION['userhandicraft'][$x]->get_fragile() == 1) : ?>
+          <h3><?php echo $row[3]; ?></h3>
+          <p><?php echo $row[4]; ?></p>
+          <?php if ($row[5] == 1) : ?>
             <p>Fragile</p>
           <?php else : ?>
             <p>Resistent</p>
           <?php endif; ?>
-          <p><?php echo $_SESSION['userhandicraft'][$x]->get_weight(); ?> (g)</p>
-          <img src="./img/<?php echo $_SESSION['userhandicraft'][$x]->get_img(); ?>" alt="<?php echo $_SESSION['userhandicraft'][$x]->get_title(); ?>" class="img-fluid">
+          <p>
+            <?php echo $row[6]; ?> (g)</p>
+          <img src="./img/<?php echo $row[7]; ?>" alt="<?php echo $row[3]; ?>" class="img-fluid">
           <div class="container d-flex">
             <form action="update.php" method="post" class="w-25">
-              <input type="hidden" name="id" value="<?php echo $_SESSION['userhandicraft'][$x]->get_id(); ?>">
+              <input type="hidden" name="id" value="<?php echo $row[0]; ?>">
               <input type="submit" value="edit" class="btn btn-success">
               <input type="hidden" name="fromadmin" value="fromadmin">
             </form>
             <form action="service-handicraft-delete.php" method="post">
-              <input type="hidden" name="id" value="<?php echo $_SESSION['userhandicraft'][$x]->get_id(); ?>">
+              <input type="hidden" name="id" value="<?php echo $row[0]; ?>">
               <input type="submit" value="delete" class="btn btn-danger">
             </form>
           </div>
         </article>
-      <?php endfor; ?>
+      <?php endwhile; ?>
     </div>
   </section>
 </body>

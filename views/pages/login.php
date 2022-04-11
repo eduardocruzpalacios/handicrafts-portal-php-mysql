@@ -36,12 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-  <?php include './views/header.php' ?>
-  <?php include './views/nav.php' ?>
+  <?php include 'views/partials/header.php' ?>
+  <?php include 'views/partials/nav.php' ?>
   <section class="container mt-3 mb-3">
     <h2>Login</h2>
   </section>
-  <?php include './views/login_form.php' ?>
+  <?php include 'views/partials/login_form.php' ?>
 </body>
 
 </html>

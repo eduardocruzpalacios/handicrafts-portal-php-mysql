@@ -5,7 +5,7 @@
     </li>
     <?php if (!isset($_COOKIE['user'])) : ?>
       <li class="nav-item">
-        <a href="login.php" class="nav-link">Log in</a>
+        <a href="./?action=login" class="nav-link">Log in</a>
       </li>
       <li class="nav-item">
         <a href="signup.php" class="nav-link">Sign up</a>

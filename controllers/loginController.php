@@ -1,6 +1,8 @@
 <?php
 
 require_once "./models/models.php";
+require_once "./auth.php";
+require_once "./url.php";
 
 class LoginController
 {
@@ -13,9 +15,11 @@ class LoginController
   public static function tryLogin($id, $password)
   {
     if (User::login($id, $password)) {
-      $user_name = User::readName($id);
-      $user_handicrafts = Handicraft::findByUserid($id);
-      require_once('views/pages/admin.php');
+      session_start();
+      session_regenerate_id(true);
+      $_SESSION['is_logged_in'] = true;
+      $_SESSION['user_handicraft'] =  Handicraft::findByUserid($id);
+      redirect('?action=admin');
     } else {
       $error = 'Wrong user or password';
       require_once('views/pages/login.php');

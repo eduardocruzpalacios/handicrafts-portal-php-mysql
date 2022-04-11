@@ -3,7 +3,7 @@
 require_once 'controllers/controllers.php';
 
 if (!(isset($_GET['action']))) {
-  HomeController::home();
+  PageController::home();
 } else {
   $action = $_GET['action'];
   switch ($action) {
@@ -13,9 +13,12 @@ if (!(isset($_GET['action']))) {
     case 'tryLogin':
       LoginController::tryLogin($_POST['user'], $_POST['password']);
       break;
+    case 'admin':
+      PageController::admin();
+      break;
     case 'home':
     default:
-      HomeController::home();
+      PageController::home();
     break;
   }
 }

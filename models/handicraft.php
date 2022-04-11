@@ -29,7 +29,7 @@ class Handicraft
     $result = mysqli_query($connection, $query);
 
     if ($result) {
-      return $result;
+      return mysqli_fetch_all($result);
     } else {
       return false;
     }

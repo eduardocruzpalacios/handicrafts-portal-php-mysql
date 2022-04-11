@@ -9,6 +9,10 @@ class LoginController
 
   public static function loginPage()
   {
+    session_start();
+    if (isLoggedIn()) {
+      redirect('?action=admin');
+    }
     require_once('views/pages/login.php');
   }
 

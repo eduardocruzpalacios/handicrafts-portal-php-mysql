@@ -24,7 +24,18 @@ if (!(isset($_GET['action']))) {
       SignupController::signupPage();
       break;
     case 'trySignup':
-      SignupController::trySignup($_POST['id'], $_POST['name'], $_POST['email'], $_POST['password']);
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        SignupController::trySignup($_POST['id'], $_POST['name'], $_POST['email'], $_POST['password']);
+      } else {
+        HandicraftController::home();
+      }
+      break;
+    case 'delete':
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        HandicraftController::deleteHandicraft($_POST['id']);
+      } else {
+        HandicraftController::home();
+      }
       break;
     case 'home':
     default:

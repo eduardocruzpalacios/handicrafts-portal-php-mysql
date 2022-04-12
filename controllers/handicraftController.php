@@ -18,4 +18,16 @@ class HandicraftController
     }
     require_once('views/pages/admin.php');
   }
+
+  public static function deleteHandicraft($id)
+  {
+    Handicraft::delete($id);
+    for ($x = 0; $x < count($_SESSION['user_handicrafts']); $x++) {
+      if ($_SESSION['user_handicrafts'][$x][0] == $id) {
+        $indexToRemove = $x;
+      }
+    }
+    array_splice($_SESSION['user_handicrafts'], $indexToRemove, 1);
+    require_once('views/pages/admin.php');
+  }
 }

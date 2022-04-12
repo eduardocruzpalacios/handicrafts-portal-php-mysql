@@ -60,28 +60,28 @@
 
   <section class="container mt-5 mb-5">
     <h3>All your handicrafts</h3>
-    <?php if (isset($_SESSION['user_handicraft'])) : ?>
+    <?php if (isset($_SESSION['user_handicrafts'])) : ?>
       <div class="row row-cols-2">
-        <?php for ($x = 0; $x < count($_SESSION['user_handicraft']); $x++) : ?>
+        <?php for ($x = 0; $x < count($_SESSION['user_handicrafts']); $x++) : ?>
           <article class="col">
-            <h3><?php echo $_SESSION['user_handicraft'][$x][3]; ?></h3>
-            <p><?php echo $_SESSION['user_handicraft'][$x][4]; ?></p>
-            <?php if ($_SESSION['user_handicraft'][$x][5] == 1) : ?>
+            <h3><?php echo $_SESSION['user_handicrafts'][$x][3]; ?></h3>
+            <p><?php echo $_SESSION['user_handicrafts'][$x][4]; ?></p>
+            <?php if ($_SESSION['user_handicrafts'][$x][5] == 1) : ?>
               <p>Fragile</p>
             <?php else : ?>
               <p>Resistent</p>
             <?php endif; ?>
             <p>
-              <?php echo $_SESSION['user_handicraft'][$x][6]; ?> (g)</p>
-            <img src="./img/<?php echo $_SESSION['user_handicraft'][$x][7]; ?>" alt="<?php echo $_SESSION['user_handicraft'][$x][3]; ?>" class="img-fluid">
+              <?php echo $_SESSION['user_handicrafts'][$x][6]; ?> (g)</p>
+            <img src="./img/<?php echo $_SESSION['user_handicrafts'][$x][7]; ?>" alt="<?php echo $_SESSION['user_handicrafts'][$x][3]; ?>" class="img-fluid">
             <div class="container d-flex">
               <form action="update.php" method="post" class="w-25">
-                <input type="hidden" name="id" value="<?php echo $_SESSION['user_handicraft'][$x][0]; ?>">
+                <input type="hidden" name="id" value="<?php echo $_SESSION['user_handicrafts'][$x][0]; ?>">
                 <input type="submit" value="edit" class="btn btn-success">
                 <input type="hidden" name="fromadmin" value="fromadmin">
               </form>
-              <form action="service-handicraft-delete.php" method="post">
-                <input type="hidden" name="id" value="<?php echo $_SESSION['user_handicraft'][$x][0]; ?>">
+              <form action="./?action=delete" method="post">
+                <input type="hidden" name="id" value="<?php echo $_SESSION['user_handicrafts'][$x][0]; ?>">
                 <input type="submit" value="delete" class="btn btn-danger">
               </form>
             </div>

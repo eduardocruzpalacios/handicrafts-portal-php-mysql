@@ -21,7 +21,7 @@ class LoginController
     if (User::login($id, $password)) {
       session_regenerate_id(true);
       $_SESSION['is_logged_in'] = true;
-      $_SESSION['user_handicraft'] =  Handicraft::findByUserid($id);
+      $_SESSION['user_handicrafts'] =  Handicraft::findByUserid($id);
       redirect('/?action=admin');
     } else {
       $error = 'Wrong user or password';

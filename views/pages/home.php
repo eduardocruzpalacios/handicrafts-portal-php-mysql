@@ -31,7 +31,7 @@
           <?php endif; ?>
           <p><?php echo $row[6] ?> (g)</p>
           <img src="./img/<?php echo $row[7]; ?>" alt="<?php echo $row[3]; ?>" class="img-fluid">
-          <p>Upload by <span class="text-info"><?php echo $row[0]; ?></span> on <span class="text-info"><?php echo $row[1]; ?></span></p>
+          <p>Upload by <span class="text-info"><?php echo $row[2]; ?></span> on <span class="text-info"><?php echo $row[1]; ?></span></p>
         </article>
       <?php endwhile; ?>
     </div>

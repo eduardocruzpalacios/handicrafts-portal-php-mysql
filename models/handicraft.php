@@ -34,4 +34,23 @@ class Handicraft
       return false;
     }
   }
+
+  public static function delete($id)
+  {
+    global $connection;
+
+    $query = "DELETE FROM handicrafts WHERE id = ?";
+
+    $stmt = $connection->prepare($query);
+
+    $stmt->bind_param('s', $id);
+
+    $result = $stmt->execute();
+
+    if ($result) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

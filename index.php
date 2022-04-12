@@ -1,9 +1,13 @@
 <?php
 
 require_once 'controllers/controllers.php';
+require_once "./auth.php";
+require_once "./url.php";
+
+session_start();
 
 if (!(isset($_GET['action']))) {
-  PageController::home();
+  HandicraftController::home();
 } else {
   $action = $_GET['action'];
   switch ($action) {
@@ -14,11 +18,11 @@ if (!(isset($_GET['action']))) {
       LoginController::tryLogin($_POST['user'], $_POST['password']);
       break;
     case 'admin':
-      PageController::admin();
+      HandicraftController::admin();
       break;
     case 'home':
     default:
-      PageController::home();
+      HandicraftController::home();
     break;
   }
 }

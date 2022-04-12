@@ -23,9 +23,12 @@ if (!(isset($_GET['action']))) {
     case 'signup':
       SignupController::signupPage();
       break;
+    case 'trySignup':
+      SignupController::trySignup($_POST['id'], $_POST['name'], $_POST['email'], $_POST['password']);
+      break;
     case 'home':
     default:
       HandicraftController::home();
-    break;
+      break;
   }
 }

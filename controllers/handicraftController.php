@@ -16,7 +16,6 @@ class HandicraftController
     if (!isLoggedIn()) {
       redirect('/?action=home');
     }
-    $user_handicrafts = $_SESSION['user_handicraft'];
     require_once('views/pages/admin.php');
   }
 }

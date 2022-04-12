@@ -15,7 +15,11 @@ if (!(isset($_GET['action']))) {
       LoginController::loginPage();
       break;
     case 'tryLogin':
-      LoginController::tryLogin($_POST['user'], $_POST['password']);
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        LoginController::tryLogin($_POST['user'], $_POST['password']);
+      } else {
+        HandicraftController::home();
+      }
       break;
     case 'admin':
       HandicraftController::admin();

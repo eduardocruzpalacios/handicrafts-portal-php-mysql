@@ -8,7 +8,7 @@
         <a href="./?action=login" class="nav-link">Log in</a>
       </li>
       <li class="nav-item">
-        <a href="signup.php" class="nav-link">Sign up</a>
+        <a href="./?action=signup" class="nav-link">Sign up</a>
       </li>
       <<?php else : ?> <li class="nav-item">
         <a href="./?action=admin" class="nav-link">Admin</a>

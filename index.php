@@ -20,6 +20,9 @@ if (!(isset($_GET['action']))) {
     case 'admin':
       HandicraftController::admin();
       break;
+    case 'signup':
+      SignupController::signupPage();
+      break;
     case 'home':
     default:
       HandicraftController::home();

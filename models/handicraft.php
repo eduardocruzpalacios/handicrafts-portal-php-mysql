@@ -72,4 +72,19 @@ class Handicraft
       return false;
     }
   }
+
+  public static function findById($id)
+  {
+    global $connection;
+
+    $query = "SELECT * FROM handicrafts WHERE id LIKE '$id'";
+
+    $result = mysqli_query($connection, $query);
+
+    if ($result) {
+      return mysqli_fetch_row($result);
+    } else {
+      return false;
+    }
+  }
 }

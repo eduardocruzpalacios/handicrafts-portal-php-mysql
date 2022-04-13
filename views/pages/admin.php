@@ -75,10 +75,9 @@
               <?php echo $_SESSION['user_handicrafts'][$x][6]; ?> (g)</p>
             <img src="./img/<?php echo $_SESSION['user_handicrafts'][$x][7]; ?>" alt="<?php echo $_SESSION['user_handicrafts'][$x][3]; ?>" class="img-fluid">
             <div class="container d-flex">
-              <form action="update.php" method="post" class="w-25">
+              <form action="./?action=update" method="post" class="w-25">
                 <input type="hidden" name="id" value="<?php echo $_SESSION['user_handicrafts'][$x][0]; ?>">
                 <input type="submit" value="edit" class="btn btn-success">
-                <input type="hidden" name="fromadmin" value="fromadmin">
               </form>
               <form action="./?action=delete" method="post">
                 <input type="hidden" name="id" value="<?php echo $_SESSION['user_handicrafts'][$x][0]; ?>">

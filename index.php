@@ -55,6 +55,13 @@ if (!(isset($_GET['action']))) {
     case 'logout':
       LogoutController::logout();
       break;
+    case 'update':
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        HandicraftController::updatePage($_POST['id']);
+      } else {
+        HandicraftController::home();
+      }
+      break;
     case 'home':
     default:
       HandicraftController::home();

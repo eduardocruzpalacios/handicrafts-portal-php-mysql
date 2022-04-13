@@ -48,4 +48,15 @@ class HandicraftController
     $_SESSION['user_handicrafts'] = Handicraft::findByUserid($_SESSION['user_id']);
     require_once('views/pages/admin.php');
   }
+
+  public static function updatePage($id)
+  {
+    $handicraft = Handicraft::findById($id);
+    $title = $handicraft[3];
+    $description = $handicraft[4];
+    $fragile = $handicraft[5];
+    $weight = $handicraft[6];
+    $img = $handicraft[7];
+    require_once('views/pages/update.php');
+  }
 }

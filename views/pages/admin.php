@@ -23,7 +23,7 @@
 
   <section class="container mt-5">
     <h3>Create a new handicraft</h3>
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="./?action=create" method="post" enctype="multipart/form-data">
       <fieldset>
         <legend>Handicraft data</legend>
         <div class="form-group mb-3">

@@ -41,6 +41,17 @@ if (!(isset($_GET['action']))) {
         HandicraftController::home();
       }
       break;
+    case 'create':
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $fragile = false;
+        if (!empty($_POST['fragile'])) {
+          $fragile = true;
+        }
+        HandicraftController::createHandicraft($_FILES["img"], $_SESSION['user_id'], $_POST['title'], $_POST['description'], $_POST['weight'], $fragile);
+      } else {
+        HandicraftController::home();
+      }
+      break;
     case 'home':
     default:
       HandicraftController::home();

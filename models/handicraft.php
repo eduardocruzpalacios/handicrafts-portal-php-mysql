@@ -53,4 +53,23 @@ class Handicraft
       return false;
     }
   }
+
+  public static function createHandicraft($dateupload, $userid, $title, $description, $fragile, $weight, $imgname)
+  {
+    global $connection;
+
+    $query = "INSERT INTO handicrafts (dateupload, userid, title, description, fragile, weight, imgname) VALUES (?, ?, ?,?, ?, ?, ?)";
+
+    $stmt = $connection->prepare($query);
+
+    $stmt->bind_param('ssssiis', $dateupload, $userid, $title, $description, $fragile, $weight, $imgname);
+
+    $result = $stmt->execute();
+
+    if ($result) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

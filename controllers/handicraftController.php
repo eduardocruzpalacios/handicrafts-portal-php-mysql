@@ -14,7 +14,7 @@ class HandicraftController
   public static function admin()
   {
     if (!isLoggedIn()) {
-      redirect('/?action=home');
+      redirect('?action=home');
     }
     $_SESSION['user_handicrafts'] = Handicraft::findByUserid($_SESSION['user_id']);
     require_once('views/pages/admin.php');

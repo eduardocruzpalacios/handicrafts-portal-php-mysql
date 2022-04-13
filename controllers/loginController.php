@@ -8,7 +8,7 @@ class LoginController
   public static function loginPage()
   {
     if (isLoggedIn()) {
-      redirect('/?action=admin');
+      redirect('?action=admin');
     }
     require_once('views/pages/login.php');
   }
@@ -16,13 +16,13 @@ class LoginController
   public static function tryLogin($id, $password)
   {
     if (isLoggedIn()) {
-      redirect('/?action=admin');
+      redirect('?action=admin');
     }
     if (User::login($id, $password)) {
       session_regenerate_id(true);
       $_SESSION['is_logged_in'] = true;
       $_SESSION['user_id'] = $id;
-      redirect('/?action=admin');
+      redirect('?action=admin');
     } else {
       $error = 'Wrong user or password';
       require_once('views/pages/login.php');

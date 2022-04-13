@@ -52,6 +52,9 @@ if (!(isset($_GET['action']))) {
         HandicraftController::home();
       }
       break;
+    case 'logout':
+      LogoutController::logout();
+      break;
     case 'home':
     default:
       HandicraftController::home();

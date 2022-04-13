@@ -14,7 +14,7 @@
         <a href="./?action=admin" class="nav-link">Admin</a>
         </li>
         <li class="nav-item">
-          <a href="service-logout.php" class="nav-link">Logout</a>
+          <a href="./?action=logout" class="nav-link">Logout</a>
         </li>
       <?php endif; ?>
   </ul>

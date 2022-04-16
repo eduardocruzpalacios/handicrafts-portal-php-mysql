@@ -59,4 +59,20 @@ class HandicraftController
     $img = $handicraft[7];
     require_once('views/pages/update.php');
   }
+
+  public static function updateHandicraftWithoutImage($id, $title, $description, $fragile, $weight)
+  {
+    if (Handicraft::updateWithoutImage($id, $title, $description, $fragile, $weight)) {
+      $msg = 'Handicraft updated successfully';
+    } else {
+      $msg = 'An error ocurred. Handicraft not updated';
+    }
+    $handicraft = Handicraft::findById($id);
+    $title = $handicraft[3];
+    $description = $handicraft[4];
+    $fragile = $handicraft[5];
+    $weight = $handicraft[6];
+    $img = $handicraft[7];
+    require_once('views/pages/update.php');
+  }
 }

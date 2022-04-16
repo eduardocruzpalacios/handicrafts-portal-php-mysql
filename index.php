@@ -62,6 +62,15 @@ if (!(isset($_GET['action']))) {
         HandicraftController::home();
       }
       break;
+    case 'tryUpdate':
+      $fragile = false;
+      if (!empty($_POST['fragile'])) {
+        $fragile = true;
+      }
+      if (empty($_FILES["img"]["name"])) {
+        HandicraftController::updateHandicraftWithoutImage($_POST["id"], $_POST['title'], $_POST['description'], $_POST['weight'], $fragile);
+      }
+      break;
     case 'home':
     default:
       HandicraftController::home();

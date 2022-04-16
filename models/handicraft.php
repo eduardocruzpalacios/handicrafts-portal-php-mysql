@@ -87,4 +87,23 @@ class Handicraft
       return false;
     }
   }
+
+  public static function updateWithoutImage($id, $title, $description, $fragile, $weight)
+  {
+    global $connection;
+
+    $query = "UPDATE handicrafts SET title = ?, description = ?, fragile = ?, weight = ? WHERE id = ?";
+
+    $stmt = $connection->prepare($query);
+
+    $stmt->bind_param('ssiii', $title, $description, $fragile, $weight, $id);
+
+    $result = $stmt->execute();
+
+    if ($result) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

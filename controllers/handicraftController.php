@@ -16,7 +16,7 @@ class HandicraftController
     if (!isLoggedIn()) {
       redirect('?action=home');
     }
-    $_SESSION['user_handicrafts'] = Handicraft::findByUserid($_SESSION['user_id']);
+    $_SESSION['user_handicrafts'] = Handicraft::findByUserId($_SESSION['user_id']);
     require_once('views/pages/admin.php');
   }
 
@@ -32,20 +32,20 @@ class HandicraftController
     require_once('views/pages/admin.php');
   }
 
-  public static function createHandicraft($img, $userid, $title, $description, $fragile, $weight)
+  public static function createHandicraft($image, $user_id, $title, $description, $is_fragile, $weight_grams)
   {
-    $imgname = $img["name"];
-    $tempname = $img["tmp_name"];
-    $folder = "img/" . $imgname;
+    $image_filename = $image["name"];
+    $tmp_name = $image["tmp_name"];
+    $folder = "img/" . $image_filename;
     $fulldateupload = getdate();
     $dateupload = "$fulldateupload[year]-$fulldateupload[mon]-$fulldateupload[mday]";
-    if (Handicraft::createHandicraft($dateupload, $userid, $title, $description, $fragile, $weight, $imgname)) {
-      move_uploaded_file($tempname, $folder);
+    if (Handicraft::createHandicraft($dateupload, $user_id, $title, $description, $is_fragile, $weight_grams, $image_filename)) {
+      move_uploaded_file($tmp_name, $folder);
       $msg = 'Handicraft created successfully';
     } else {
       $msg = 'An error ocurred. Handicraft not created';
     }
-    $_SESSION['user_handicrafts'] = Handicraft::findByUserid($_SESSION['user_id']);
+    $_SESSION['user_handicrafts'] = Handicraft::findByUserId($_SESSION['user_id']);
     require_once('views/pages/admin.php');
   }
 
@@ -54,15 +54,15 @@ class HandicraftController
     $handicraft = Handicraft::findById($id);
     $title = $handicraft[3];
     $description = $handicraft[4];
-    $fragile = $handicraft[5];
-    $weight = $handicraft[6];
-    $img = $handicraft[7];
+    $is_fragile = $handicraft[5];
+    $weight_grams = $handicraft[6];
+    $image_filename = $handicraft[7];
     require_once('views/pages/update.php');
   }
 
-  public static function updateHandicraftWithoutImage($id, $title, $description, $fragile, $weight)
+  public static function updateHandicraftWithoutImage($id, $title, $description, $is_fragile, $weight_grams)
   {
-    if (Handicraft::updateWithoutImage($id, $title, $description, $fragile, $weight)) {
+    if (Handicraft::updateWithoutImage($id, $title, $description, $is_fragile, $weight_grams)) {
       $msg = 'Handicraft updated successfully';
     } else {
       $msg = 'An error ocurred. Handicraft not updated';
@@ -70,19 +70,19 @@ class HandicraftController
     $handicraft = Handicraft::findById($id);
     $title = $handicraft[3];
     $description = $handicraft[4];
-    $fragile = $handicraft[5];
-    $weight = $handicraft[6];
-    $img = $handicraft[7];
+    $is_fragile = $handicraft[5];
+    $weight_grams = $handicraft[6];
+    $image_filename = $handicraft[7];
     require_once('views/pages/update.php');
   }
 
-  public static function updateHandicraft($id, $title, $description, $fragile, $weight, $image_file)
+  public static function updateHandicraft($id, $title, $description, $is_fragile, $weight_grams, $image_file)
   {
-    $img = $image_file["name"];
-    $tempname = $image_file["tmp_name"];
-    $folder = "img/" . $img;
-    if (Handicraft::update($id, $title, $description, $fragile, $weight, $img)) {
-      move_uploaded_file($tempname, $folder);
+    $image_filename = $image_file["name"];
+    $tmp_name = $image_file["tmp_name"];
+    $folder = "img/" . $image_filename;
+    if (Handicraft::update($id, $title, $description, $is_fragile, $weight_grams, $image_filename)) {
+      move_uploaded_file($tmp_name, $folder);
       $msg = 'Handicraft updated successfully';
     } else {
       $msg = 'An error ocurred. Handicraft not updated';
@@ -90,9 +90,9 @@ class HandicraftController
     $handicraft = Handicraft::findById($id);
     $title = $handicraft[3];
     $description = $handicraft[4];
-    $fragile = $handicraft[5];
-    $weight = $handicraft[6];
-    $img = $handicraft[7];
+    $is_fragile = $handicraft[5];
+    $weight_grams = $handicraft[6];
+    $image_filename = $handicraft[7];
     require_once('views/pages/update.php');
   }
 }

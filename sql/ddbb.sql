@@ -13,12 +13,12 @@ CREATE TABLE IF NOT EXISTS users (
 /* TABLE HANDICRAFT */
 CREATE TABLE IF NOT EXISTS handicrafts (
   id INT NOT NULL AUTO_INCREMENT,
-  dateupload DATE NOT NULL,
-  userid VARCHAR(20) NOT NULL,
+  date_created DATE NOT NULL,
+  user_id VARCHAR(20) NOT NULL,
   title VARCHAR(50) NOT NULL,
   description VARCHAR(255) NOT NULL,
-  fragile BIT(1) NOT NULL,
-  weight FLOAT NULL DEFAULT NULL,
-  imgname VARCHAR(100) NOT NULL,
+  is_fragile BIT(1) NOT NULL,
+  weight_grams FLOAT NULL DEFAULT NULL,
+  image_filename VARCHAR(100) NOT NULL,
   PRIMARY KEY (id)
 ) ENGINE = InnoDB;

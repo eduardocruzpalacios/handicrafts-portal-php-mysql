@@ -20,11 +20,11 @@ class Handicraft
     }
   }
 
-  public static function findByUserid($userid)
+  public static function findByUserId($user_id)
   {
     global $connection;
 
-    $query = "SELECT * FROM handicrafts WHERE userid LIKE '$userid'";
+    $query = "SELECT * FROM handicrafts WHERE user_id LIKE '$user_id'";
 
     $result = mysqli_query($connection, $query);
 
@@ -54,15 +54,15 @@ class Handicraft
     }
   }
 
-  public static function createHandicraft($dateupload, $userid, $title, $description, $fragile, $weight, $imgname)
+  public static function createHandicraft($date_created, $user_id, $title, $description, $is_fragile, $weight_grams, $image_filename)
   {
     global $connection;
 
-    $query = "INSERT INTO handicrafts (dateupload, userid, title, description, fragile, weight, imgname) VALUES (?, ?, ?,?, ?, ?, ?)";
+    $query = "INSERT INTO handicrafts (date_created, user_id, title, description, is_fragile, weight_grams, image_filename) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $connection->prepare($query);
 
-    $stmt->bind_param('ssssiis', $dateupload, $userid, $title, $description, $fragile, $weight, $imgname);
+    $stmt->bind_param('ssssids', $date_created, $user_id, $title, $description, $is_fragile, $weight_grams, $image_filename);
 
     $result = $stmt->execute();
 
@@ -88,15 +88,15 @@ class Handicraft
     }
   }
 
-  public static function updateWithoutImage($id, $title, $description, $fragile, $weight)
+  public static function updateWithoutImage($id, $title, $description, $is_fragile, $weight_grams)
   {
     global $connection;
 
-    $query = "UPDATE handicrafts SET title = ?, description = ?, fragile = ?, weight = ? WHERE id = ?";
+    $query = "UPDATE handicrafts SET title = ?, description = ?, is_fragile = ?, weight_grams = ? WHERE id = ?";
 
     $stmt = $connection->prepare($query);
 
-    $stmt->bind_param('ssiii', $title, $description, $fragile, $weight, $id);
+    $stmt->bind_param('ssidi', $title, $description, $is_fragile, $weight_grams, $id);
 
     $result = $stmt->execute();
 
@@ -107,15 +107,15 @@ class Handicraft
     }
   }
 
-  public static function update($id, $title, $description, $fragile, $weight, $imgname)
+  public static function update($id, $title, $description, $is_fragile, $weight_grams, $image_filename)
   {
     global $connection;
 
-    $query = "UPDATE handicrafts SET title = ?, description = ?, fragile = ?, weight = ?, imgname = ? WHERE id = ?";
+    $query = "UPDATE handicrafts SET title = ?, description = ?, is_fragile = ?, weight_grams = ?, image_filename = ? WHERE id = ?";
 
     $stmt = $connection->prepare($query);
 
-    $stmt->bind_param('ssiisi', $title, $description, $fragile, $weight, $imgname, $id);
+    $stmt->bind_param('ssidsi', $title, $description, $is_fragile, $weight_grams, $image_filename, $id);
 
     $result = $stmt->execute();
 

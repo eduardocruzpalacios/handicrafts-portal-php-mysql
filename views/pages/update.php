@@ -34,21 +34,21 @@
           <textarea name="description" id="description" cols="30" rows="10" required class="form-control"><?php echo $description ?></textarea>
         </div>
         <div class="form-group mb-3">
-          <label for="fragile" class="form-check-label">Is fragile?</label>
-          <input type="checkbox" name="fragile" id="fragile" value="fragile" class="form-check-input" <?php if ($fragile == 1) {
-                                                                                                        echo 'checked';
-                                                                                                      } ?>>
+          <label for="is_fragile" class="form-check-label">Is fragile?</label>
+          <input type="checkbox" name="is_fragile" id="is_fragile" value="is_fragile" class="form-check-input" <?php if ($is_fragile == 1) {
+                                                                                                                  echo 'checked';
+                                                                                                                } ?>>
         </div>
         <div class="form-group mb-3">
           <label for="weight" class="form-label">Weight (g):</label>
-          <input type="number" name="weight" id="weight" value="<?php echo $weight ?>" class="form-control">
+          <input type="number" name="weight_grams" id="weight_grams" value="<?php echo $weight_grams ?>" class="form-control">
         </div>
         <div class="form-group mb-3">
-          <img src="./img/<?php echo $img ?>" class="img-fluid" alt="<?php echo $title ?>">
-          <label for="img" class="form-label">Change the photo:</label>
-          <input type="file" name="img" id="img" value="" class="form-control">
+          <img src="./img/<?php echo $image_filename ?>" class="img-fluid" alt="<?php echo $title ?>">
+          <label for="image" class="form-label">Change the photo:</label>
+          <input type="file" name="image" id="image" value="" class="form-control">
         </div>
-        <input type="hidden" name="imgname" value="<?php echo $img; ?>">
+        <input type="hidden" name="image_filename" value="<?php echo $image_filename; ?>">
         <input type="submit" name="update" value="Update" class="btn btn-success">
         <input type="hidden" name="id" value="<?php echo $id; ?>">
         <?php if (isset($msg)) : ?>

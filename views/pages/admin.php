@@ -35,16 +35,16 @@
           <textarea name="description" id="description" cols="30" rows="10" required class="form-control">This thing is made with...</textarea>
         </div>
         <div class="form-group">
-          <label for="fragile" class="form-check-label">Is fragile?</label>
-          <input type="checkbox" name="fragile" id="fragile" value="fragile" class="form-check-input">
+          <label for="is_fragile" class="form-check-label">Is fragile?</label>
+          <input type="checkbox" name="is_fragile" id="is_fragile" value="is_fragile" class="form-check-input">
         </div>
         <div class="form-group">
-          <label for="weight" class="form-label">Weight (g):</label>
-          <input type="number" name="weight" id="weight" value="0" class="form-control">
+          <label for="weight_grams" class="form-label">Weight (g):</label>
+          <input type="number" name="weight_grams" id="weight_grams" value="0" class="form-control">
         </div>
         <div class="form-group">
-          <label for="img" class="form-label">Upload a photo:</label>
-          <input type="file" name="img" id="img" value="" required class="form-control">
+          <label for="image" class="form-label">Upload a photo:</label>
+          <input type="file" name="image" id="image" value="" required class="form-control">
         </div>
         <input type="submit" name="create" value="Create" class="btn btn-primary mt-3">
         <?php if (isset($msg)) : ?>

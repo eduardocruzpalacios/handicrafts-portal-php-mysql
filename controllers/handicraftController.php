@@ -32,7 +32,7 @@ class HandicraftController
     require_once('views/pages/admin.php');
   }
 
-  public static function createHandicraft($img, $userid, $title, $description, $weight, $fragile)
+  public static function createHandicraft($img, $userid, $title, $description, $fragile, $weight)
   {
     $imgname = $img["name"];
     $tempname = $img["tmp_name"];

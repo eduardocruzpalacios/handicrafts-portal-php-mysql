@@ -1,5 +1,5 @@
 <section class="container">
-  <form action="" method="post">
+  <form action="./?action=tryLogin" method="post">
     <fieldset>
       <legend>User data</legend>
       <div class="form-group">

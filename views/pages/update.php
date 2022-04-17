@@ -1,62 +1,3 @@
-<?php
-require 'service-ddbb.php';
-
-if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-  header('Location: admin.php');
-  exit();
-} else if (isset($_POST['fromadmin'])) {
-
-  $id = $_POST['id'];
-
-  $result = readHandicraftById($id);
-  if ($result) {
-    while ($row = mysqli_fetch_row($result)) {
-      $title = $row[3];
-      $description = $row[4];
-      $fragile = $row[5];
-      $weight = $row[6];
-      $img = $row[7];
-    }
-  }
-} else {
-
-  if (isset($_POST['update'])) {
-
-    $id = $_POST['id'];
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $weight = $_POST['weight'];
-
-    $fragile = false;
-    if (!empty($_POST['fragile'])) {
-      $fragile = true;
-    }
-
-    if (!empty($_FILES["img"]["name"])) {
-
-      $img = $_FILES["img"]["name"];
-      $tempname = $_FILES["img"]["tmp_name"];
-      $folder = "img/" . $img;
-
-      if (updateHandicraft($id, $title, $description, $fragile, $weight, $img)) {
-        move_uploaded_file($tempname, $folder);
-        $msg = 'Handicraft updated successfully';
-      } else {
-        $msg = 'An error ocurred. Handicraft not updated';
-      }
-    } else {
-
-      $img = $_POST['imgname'];
-
-      if (updateHandicraftNoImg($id, $title, $description, $fragile, $weight)) {
-        $msg = 'Handicraft updated successfully';
-      } else {
-        $msg = 'An error ocurred. Handicraft not updated';
-      }
-    }
-  }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,15 +14,15 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
 <body>
 
-  <?php include './views/header.php' ?>
-  <?php include './views/nav.php' ?>
+  <?php include 'views/partials/header.php' ?>
+  <?php include 'views/partials/nav.php' ?>
 
   <section class="container mt-3">
-    <h2>Update this handicraft</h2>
+    <h2>Update</h2>
   </section>
 
   <section class="container mt-5 mb-5">
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="./?action=tryUpdate" method="post" enctype="multipart/form-data">
       <fieldset>
         <legend>Handicraft data</legend>
         <div class="form-group mb-3">
@@ -103,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
           <input type="number" name="weight" id="weight" value="<?php echo $weight ?>" class="form-control">
         </div>
         <div class="form-group mb-3">
-          <img src="./img/<?php echo $img ?>" class="img-fluid">
+          <img src="./img/<?php echo $img ?>" class="img-fluid" alt="<?php echo $title ?>">
           <label for="img" class="form-label">Change the photo:</label>
           <input type="file" name="img" id="img" value="" class="form-control">
         </div>

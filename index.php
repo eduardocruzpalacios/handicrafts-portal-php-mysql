@@ -69,6 +69,8 @@ if (!(isset($_GET['action']))) {
       }
       if (empty($_FILES["img"]["name"])) {
         HandicraftController::updateHandicraftWithoutImage($_POST["id"], $_POST['title'], $_POST['description'], $_POST['weight'], $fragile);
+      } else {
+        HandicraftController::updateHandicraft($_POST["id"], $_POST['title'], $_POST['description'], $_POST['weight'], $fragile, $_FILES["img"]);
       }
       break;
     case 'home':

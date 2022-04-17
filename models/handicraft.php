@@ -106,4 +106,23 @@ class Handicraft
       return false;
     }
   }
+
+  public static function update($id, $title, $description, $fragile, $weight, $imgname)
+  {
+    global $connection;
+
+    $query = "UPDATE handicrafts SET title = ?, description = ?, fragile = ?, weight = ?, imgname = ? WHERE id = ?";
+
+    $stmt = $connection->prepare($query);
+
+    $stmt->bind_param('ssiisi', $title, $description, $fragile, $weight, $imgname, $id);
+
+    $result = $stmt->execute();
+
+    if ($result) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

@@ -64,7 +64,7 @@ if (!(isset($_GET['action']))) {
       break;
     case 'tryUpdate':
       $is_fragile = false;
-      if (!empty($_POST['fragile'])) {
+      if (!empty($_POST['is_fragile'])) {
         $is_fragile = true;
       }
       if (empty($_FILES["image"]["name"])) {

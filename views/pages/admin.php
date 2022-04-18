@@ -47,10 +47,10 @@
           <input type="file" name="image" id="image" value="" required class="form-control">
         </div>
         <input type="submit" name="create" value="Create" class="btn btn-primary mt-3">
-        <?php if (isset($msg)) : ?>
+        <?php if (isset($message)) : ?>
           <span>
             <?php
-            echo $msg;
+            echo $message;
             ?>
           </span>
         <?php endif; ?>

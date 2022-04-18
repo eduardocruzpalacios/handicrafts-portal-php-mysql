@@ -24,7 +24,7 @@ class LoginController
       $_SESSION['user_id'] = $id;
       redirect('?action=admin');
     } else {
-      $error = 'Wrong user or password';
+      $message = 'Wrong user or password';
       require_once('views/pages/login.php');
     }
   }

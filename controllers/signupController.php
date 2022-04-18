@@ -19,11 +19,11 @@ class SignupController
       redirect('?action=admin');
     }
     if (User::userIdExists($id)) {
-      $error = 'Sorry, that user name is not available';
+      $message = 'Sorry, that user name is not available';
       require_once('views/pages/signup.php');
     } else {
       if (User::userEmailExists($email)) {
-        $error = 'Sorry, that email is not available';
+        $message = 'Sorry, that email is not available';
         require_once('views/pages/signup.php');
       } else {
         User::createUser($id, $name, $email, $password);

@@ -51,10 +51,10 @@
         <input type="hidden" name="image_filename" value="<?php echo $image_filename; ?>">
         <input type="submit" name="update" value="Update" class="btn btn-success">
         <input type="hidden" name="id" value="<?php echo $id; ?>">
-        <?php if (isset($msg)) : ?>
+        <?php if (isset($message)) : ?>
           <span>
             <?php
-            echo $msg;
+            echo $message;
             ?>
           </span>
         <?php endif; ?>

@@ -41,9 +41,9 @@ class HandicraftController
     $dateupload = "$fulldateupload[year]-$fulldateupload[mon]-$fulldateupload[mday]";
     if (Handicraft::createHandicraft($dateupload, $user_id, $title, $description, $is_fragile, $weight_grams, $image_filename)) {
       move_uploaded_file($tmp_name, $folder);
-      $msg = 'Handicraft created successfully';
+      $message = 'Handicraft created successfully';
     } else {
-      $msg = 'An error ocurred. Handicraft not created';
+      $message = 'An error ocurred. Handicraft not created';
     }
     $_SESSION['user_handicrafts'] = Handicraft::findByUserId($_SESSION['user_id']);
     require_once('views/pages/admin.php');
@@ -63,9 +63,9 @@ class HandicraftController
   public static function updateHandicraftWithoutImage($id, $title, $description, $is_fragile, $weight_grams)
   {
     if (Handicraft::updateWithoutImage($id, $title, $description, $is_fragile, $weight_grams)) {
-      $msg = 'Handicraft updated successfully';
+      $message = 'Handicraft updated successfully';
     } else {
-      $msg = 'An error ocurred. Handicraft not updated';
+      $message = 'An error ocurred. Handicraft not updated';
     }
     $handicraft = Handicraft::findById($id);
     $title = $handicraft[3];
@@ -83,9 +83,9 @@ class HandicraftController
     $folder = "img/" . $image_filename;
     if (Handicraft::update($id, $title, $description, $is_fragile, $weight_grams, $image_filename)) {
       move_uploaded_file($tmp_name, $folder);
-      $msg = 'Handicraft updated successfully';
+      $message = 'Handicraft updated successfully';
     } else {
-      $msg = 'An error ocurred. Handicraft not updated';
+      $message = 'An error ocurred. Handicraft not updated';
     }
     $handicraft = Handicraft::findById($id);
     $title = $handicraft[3];

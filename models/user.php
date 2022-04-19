@@ -31,7 +31,6 @@ class User
     if ($result) {
       return mysqli_fetch_row($result)[0];
     } else {
-      echo ' false';
       return false;
     }
   }

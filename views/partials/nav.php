@@ -18,7 +18,7 @@
         </li>
       <?php endif; ?>
   </ul>
-  <?php if (isset($_COOKIE['user'])) : ?>
-    <span class="navbar-text text-info">Welcome <?php echo $_COOKIE['user'] ?></span>
+  <?php if (isset($_SESSION['user_id'])) : ?>
+    <span class="navbar-text text-info">Welcome <?php echo $_SESSION['user_id'] ?></span>
   <?php endif; ?>
 </nav>

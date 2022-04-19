@@ -19,10 +19,10 @@
         <input type="password" placeholder="********" id="password" name="password" required maxlength="20" minlength="8" class="form-control">
       </div>
       <input type="submit" name="" id="" value="Signup" class="btn btn-primary mt-3">
-      <?php if (isset($error)) : ?>
+      <?php if (isset($message)) : ?>
         <span>
           <?php
-          echo $error;
+          echo $message;
           ?>
         </span>
       <?php endif; ?>

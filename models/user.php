@@ -9,16 +9,15 @@ class User
   {
     global $connection;
 
-    $query = "SELECT id FROM users WHERE
-    users.id = '$id' AND users.password = '$password'";
+    $query = "SELECT password FROM users WHERE id = '$id'";
 
     $result = mysqli_query($connection, $query);
 
-    if (mysqli_fetch_row($result)) {
-      return true;
-    } else {
-      return false;
+    if ($result) {
+      $hash = mysqli_fetch_row($result)[0];
+      return password_verify($password, $hash);
     }
+    return false;
   }
 
   public static function readName($id)
@@ -32,7 +31,6 @@ class User
     if ($result) {
       return mysqli_fetch_row($result)[0];
     } else {
-      echo ' false';
       return false;
     }
   }

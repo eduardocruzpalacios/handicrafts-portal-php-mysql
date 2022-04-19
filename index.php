@@ -43,11 +43,11 @@ if (!(isset($_GET['action']))) {
       break;
     case 'create':
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $fragile = false;
-        if (!empty($_POST['fragile'])) {
-          $fragile = true;
+        $is_fragile = false;
+        if (!empty($_POST['is_fragile'])) {
+          $is_fragile = true;
         }
-        HandicraftController::createHandicraft($_FILES["img"], $_SESSION['user_id'], $_POST['title'], $_POST['description'], $_POST['weight'], $fragile);
+        HandicraftController::createHandicraft($_FILES["image"], $_SESSION['user_id'], $_POST['title'], $_POST['description'], $is_fragile, $_POST['weight_grams']);
       } else {
         HandicraftController::home();
       }
@@ -63,14 +63,14 @@ if (!(isset($_GET['action']))) {
       }
       break;
     case 'tryUpdate':
-      $fragile = false;
-      if (!empty($_POST['fragile'])) {
-        $fragile = true;
+      $is_fragile = false;
+      if (!empty($_POST['is_fragile'])) {
+        $is_fragile = true;
       }
-      if (empty($_FILES["img"]["name"])) {
-        HandicraftController::updateHandicraftWithoutImage($_POST["id"], $_POST['title'], $_POST['description'], $_POST['weight'], $fragile);
+      if (empty($_FILES["image"]["name"])) {
+        HandicraftController::updateHandicraftWithoutImage($_POST["id"], $_POST['title'], $_POST['description'], $is_fragile, $_POST['weight_grams']);
       } else {
-        HandicraftController::updateHandicraft($_POST["id"], $_POST['title'], $_POST['description'], $_POST['weight'], $fragile, $_FILES["img"]);
+        HandicraftController::updateHandicraft($_POST["id"], $_POST['title'], $_POST['description'], $is_fragile, $_POST['weight_grams'], $_FILES["image"]);
       }
       break;
     case 'home':

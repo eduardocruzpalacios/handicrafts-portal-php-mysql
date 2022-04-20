@@ -34,7 +34,7 @@ MVC architectural design pattern.
 11. Implement pagination by counting the number of results, using OFFSET and LIMIT in SQL queries, and $_GET from URLs to organize them.
 12. Refactor models to use the PDO (PHP Data Objects) interface instead of mysqli to invert dependencies so that the app becomes more easily maintained in case DB changes.
 13. Add categories for handicrafts by using a table for categories and another one where rows contain the id of the handicraft and the id of a category. Views must render check boxes.
-14. Make a detail view for handicrafts of the home page. When clicking on a view button, the application redirects to an URL like handicrafts/id. This goes to the controller that uses the id parameter to retrieve the handicraft from the DB and renders its data on the corresponding view.
+14. Make a detail view for handicrafts where users get from the home page by clicking a button that is in each handicraft card. When clicking it, the application redirects to an URL like handicrafts/id. This goes to the controller that uses the id parameter to retrieve the handicraft from the DB and renders its data on the corresponding view.
 15. Create a config file for environments (development/production) to hide confidential data, such as admin info to login in the DB system, and exclude it to belong to the repository by using a .gitignore file.
 16. UX/UI.
 17. Send email to the user when a handicraft has been created.

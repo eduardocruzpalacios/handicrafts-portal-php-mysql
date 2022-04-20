@@ -37,3 +37,8 @@ MVC architectural design pattern.
 14. Make a detail view for handicrafts of the home page. When clicking on a view button, the application redirects to an URL like handicrafts/id. This goes to the controller that uses the id parameter to retrieve the handicraft from the DB and renders its data on the corresponding view.
 15. Create a config file for environments (development/production) to hide confidential data, such as admin info to login in the DB system, and exclude it to belong to the repository by using a .gitignore file.
 16. UX/UI.
+17. Send email to the user when a handicraft has been created.
+18. Request email verification for user to finish the signup.
+19. Create an user admin page for updating user info.
+20. Change the format of the date_created property/field in PHP and DB to get hour, minute and secondDate data.
+21. Fix the bug that occurs when a new user is created in signup page.

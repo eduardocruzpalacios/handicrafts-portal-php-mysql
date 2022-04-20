@@ -8,7 +8,8 @@ class Db
     $user = 'root';
     $pass = '';
     $db = 'handicraft';
-    $connection = mysqli_connect($host, $user, $pass, $db);
+    $port = 3306;
+    $connection = mysqli_connect($host, $user, $pass, $db, $port);
 
     return $connection;
   }

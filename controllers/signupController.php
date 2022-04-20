@@ -15,9 +15,6 @@ class SignupController
 
   public static function trySignup($id, $name, $email, $password)
   {
-    if (isLoggedIn()) {
-      redirect('?action=admin');
-    }
     if (User::userIdExists($id)) {
       $message = 'Sorry, that user name is not available';
       require_once('views/pages/signup.php');

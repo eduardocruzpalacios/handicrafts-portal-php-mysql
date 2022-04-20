@@ -27,6 +27,7 @@ class SignupController
         User::createUser($id, $name, $email, $hash);
         session_regenerate_id(true);
         $_SESSION['is_logged_in'] = true;
+        $_SESSION['user_id'] = $id;
         redirect('?action=admin');
       }
     }

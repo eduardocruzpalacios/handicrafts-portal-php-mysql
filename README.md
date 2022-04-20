@@ -41,4 +41,3 @@ MVC architectural design pattern.
 18. Request email verification for user to finish the signup.
 19. Create an user admin page for updating user info.
 20. Change the format of the date_created property/field in PHP and DB to get hour, minute and secondDate data.
-21. Fix the bug that occurs when a new user is created in signup page.

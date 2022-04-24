@@ -7,7 +7,7 @@ class Db
     $host = 'localhost';
     $user = 'root';
     $pass = '';
-    $db = 'handicraft';
+    $db = 'handicrafts_portal';
     $port = 3306;
     $connection = mysqli_connect($host, $user, $pass, $db, $port);
 

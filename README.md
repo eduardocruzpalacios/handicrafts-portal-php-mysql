@@ -1,4 +1,4 @@
-# Handicraft portal
+# Handicrafts portal
 ## Scope
 - Portal with a public view where to see all handicrafts.
 - Users not logged can login and signup.

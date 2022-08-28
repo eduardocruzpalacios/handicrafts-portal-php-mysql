@@ -1,18 +1,22 @@
 # Handicrafts portal
-## Scope
-- Portal with a public view where to see all handicrafts.
-- Users not logged can login and signup.
-- Users logged can logout and are allowed to enter an admin view where they can perform CRUD tasks with the handicrafts they have created.
-- SQL statements to create the DDBB and tables as well as those to relate the tables are provided.
-## Technologies
-- PHP 7.3.29
-- MySQL
-- HTML5
-- Bootstrap 5.1
-
-## Design
+Handicrafts portal built with PHP 7.3.29, MySQL and Bootstrap 5.1.
+## Functionality
+### Public web page
+- Read and print all handicrafts
+- Login into an user account
+- Create a new user account
+### Admin site
+- Read user's handicrafts
+- Create one handicraft
+- Update one user's handicraft
+- Delete one user's handicraft
+- Logout
+## Architecture
 MVC architectural design pattern.
+## Data Source
+MySQL database.
 
+SQL statements to create the database and table along with CRUD queries are provided.
 ## Installation in XAMPP development environment
 1. Install [XAMPP](https://www.apachefriends.org/index.html).
 2. Execute XAMPP control panel and Start both Apache and MySQL.
